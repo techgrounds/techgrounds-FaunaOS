@@ -20,12 +20,11 @@
         $ git config --global user.email "jordan.hodge.lifeos@gmail.com"
         ```
         
-        ![Screenshot 2023-06-05 at 12.24.02.png](/00_includes//Screenshot_2023-06-05_at_12.24.02.png)
+        ![Screenshot 2023-06-05 at 12.24.02.png](/00_includes/Screenshot_2023-06-05_at_12.24.02.png)
         
     3. Setting Github Desktop Resportory
     
-        
-        ![Screenshot 2023-06-05 at 12.37.07.png](%5BGIT-01%5D%20Opdracht%201%20c685bbd8320643849e64b7dbe5dcee9c/Screenshot_2023-06-05_at_12.37.07.png)
+    ![Screenshot 2023-06-05 at 12.37.07.png](/00_includes/Screenshot_2023-06-05_at_12.37.07.png)
         
 3. Repository pushed naar Github
     
