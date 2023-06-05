@@ -1,8 +1,12 @@
-# Maak een repository op je GitHub account voor je portfolio
+# [Onderwerp]
+[Git & Github -> Repository aanmaken en delen]
 
-Parent-task: [GIT-01] Opdracht 1 (https://www.notion.so/GIT-01-Opdracht-1-c685bbd8320643849e64b7dbe5dcee9c?pvs=21)
-Status: Done
-Task ID: 13
+# Maak een GitHub account als je er nog geen hebt
+# Maak een repository op je GitHub account voor je portfolio
+# Geef permissies aan je teamgenoten om de repository te gebruiken
+# Push je code naar je repository
+# Pull / Clone een repository van je peer.
+
 
 ## Description
 
