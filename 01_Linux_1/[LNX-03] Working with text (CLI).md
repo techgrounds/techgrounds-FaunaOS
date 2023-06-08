@@ -17,7 +17,8 @@ cat
 - ls
 - echo
 - `>`
-- cat 
+- cat
+
 ![steps](/00_includes/LNX3_1.png)
 
 ### - Use a command to write the contents of your text file to the terminal. Make use of a command to filter the output so that only the sentence containing ‘techgrounds’ appears.
