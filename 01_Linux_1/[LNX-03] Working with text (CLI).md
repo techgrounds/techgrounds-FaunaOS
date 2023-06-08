@@ -4,11 +4,11 @@
 Werken met text via linux command line en text
 
 ## Key-terms
-[Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
-echo  
-cat  
-`>`  
-`|`
+*[Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]*  
+- echo  
+- cat  
+- `>`  
+- `|`
 
 ## Opdracht
 
@@ -44,8 +44,13 @@ Linux command line 5th edition
 https://thoughtbot.com/blog/input-output-redirection-in-the-shell
 
 ### Ervaren problemen
-[Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
+*[Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]*
+
+- Uit de text file komen na less command
 
 
 ### Resultaat
-[Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
+*[Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]*
+- F  
+- ctrl + c  
+- q  
