@@ -16,6 +16,18 @@ https://www.cyberciti.biz/faq/linux-check-existing-groups-users/
 [Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
 
 Per ongeluk systeem user aangemaakt
+te horen gekregen dat dat oke is
+nu moet ik mijn nieuwe user nog toevoegen aan de juiste groep
+usermod -a -G examplegroup exampleusername
+het lijkt erop dat faunlnx04 en jordan_ al in de sudo group zit maar wel een andere id heeft namelijk 1001 ivp 1000 bij jordan_ 
+ik zou verwachten dat deze dan ook 1000 heeft maargoed het lijkt erop dat het werkt als ik cat /etc/passwd type
+faunalnx04:x:1001:27:jordan,,,:/home/faunalnx04:/bin/bash
+
+usermod -a -G sudo faunalnx04
+
+![usergroepsudo](/00_includes/Screenshot%202023-06-08%20at%2020.45.59.png)
+
+
 
 ### Resultaat
 [Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
