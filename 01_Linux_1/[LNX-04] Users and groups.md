@@ -5,11 +5,35 @@
 [Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
 
 ## Opdracht
+
+### Create a new user in your VM.
+
+`$ adduser user_name`
+
+### The new user should be part of an admin group.
+
+`$ passwd user_name`
+
+### The new user should have a password.
+
+`$ passwd user_name`
+
+### The new user should be able to use ‘sudo’
+
+
+
+### Locate the files that store users, passwords, and groups. See if you can find your newly created user’s data in there.
+
+--
+
 ### Gebruikte bronnen
 [Plaats hier de bronnen die je hebt gebruikt.]
 https://linuxconcept.com/how-to-create-a-sudo-user-on-rhel-red-hat-enterprise-linux-operating-system/
+
 https://devconnected.com/how-to-list-users-and-groups-on-linux/
+
 https://askubuntu.com/questions/1428749/created-user-but-i-cant-switch-to-new-account
+
 https://www.cyberciti.biz/faq/linux-check-existing-groups-users/
 
 ### Ervaren problemen
