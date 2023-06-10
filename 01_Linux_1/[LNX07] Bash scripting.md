@@ -4,7 +4,11 @@
 ## Key-terms
 [Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
 
-## Code Learned
+## Code Use
+`pwd`  
+`mkdir`  
+`cd`
+
 
 
 ## Opdracht
@@ -15,22 +19,45 @@
 
 1. Om te beginnen gaan we kijken in welke map we zitten met `pwd`
 
+   ~~~~
+    pwd
     /home/jordan_
-
-    ![homefolder](/00_includes/%5BLNX07%5D%20Screenshots/LNX07HomeFolder.png)
+   ~~~~
 
 2. Hierin gaan we een nieuwe map aanmaken dit doen we met het volgende command `mkdir`
 
-    ![Alt text](../00_includes/%5BLNX07%5D%20Screenshots/Createhomefolder.png)
+    ~~~~
+    mkdir scripts
+    ~~~~
 
-3. vervolgens gaan we de scripts map die we net hebben aangemaakt in via `cd scipts`
+3. vervolgens gaan we naar de scripts map die we net hebben aangemaakt in via `cd`
 
+    ~~~~
+    cd scripts
+    ~~~~
 
+    Eind resultaat
 
---
-#### Add the scripts directory to the PATH variable.
-1. Nu gaan we onze scripts directory toevoegen aan PATH variable zodat we deze later kunnen oproepen. We doen dit met de `export` command
+    --
+    ![create_directory_scripts](../00_includes/%5BLNX07%5D%20Screenshots/create_directory_scripts.png)--
 
+### Add the scripts directory to the PATH variable.
+
+1. Nu gaan we onze scripts directory toevoegen aan PATH variable zodat we deze later kunnen oproepen. We doen dit met de `export` command. omdat het absolute path van onze directory /home/jordan_/scripts is gaan we deze ook gebruiken.
+
+    ~~~
+    export PATH=$PATH:/home/jordan_/scripts
+    ~~~
+2. nu gaan we controleren of dit ook is gelukt d.m.v. `echo $PATH` en om ons pad te filteren voegen we hier ook een pipe filter aan toe met `| grep /home/jordan_/scripts`
+    ~~~
+    echo $PATH | grep /home/jordan_/scripts
+    ~~~
+
+    Eind resultaat
+
+    --
+    ![Alt text](../00_includes/%5BLNX07%5D%20Screenshots/Adddirectorytopathvariable.png)--
+    
 #### Create a script that appends a line of text to a text file whenever it is executed.
 #### Create a script that installs the httpd package, activates httpd, and enables httpd. Finally, your script should print the status of httpd in the terminal.
 
