@@ -70,8 +70,12 @@
     ~~~~
 3. nu moeten we de variable aangeven voor de text en het textbestand zodat we deze later kunnen aangeven bij het runnen van het script dit doen we op de volgende manier.
     ~~~
-    line=This is my first script
-    file=output.text
+    line="This is my first script"
+    file="output.text"
+    ~~~
+4. Vervolgens moeten we er ook voor zorgen dat onze input text in een text bestand wordt geprint. dit doen we door `echo` en `>>` 
+    ~~~
+    echo "$line" >> "$file"
     ~~~
 
 #### Create a script that installs the httpd package, activates httpd, and enables httpd. Finally, your script should print the status of httpd in the terminal.
@@ -102,7 +106,13 @@ A check for a condition can be done using ‘if’, ‘elif’, and/or ‘else�
 [Plaats hier de bronnen die je hebt gebruikt.]
 
 ### Ervaren problemen
-[Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
+- ik moet er achter komen hoe scripts werkte en dat was best lastig omdat veel tutorials niet de basis hadden.
+- chmod -x ging niet goed omdat ik eigenlijk +x moest hebben. ik had dit kunnen weten omdat we natuurlijk execute rechten toevoegen en niet erafhalen.
+- verder vond ik veel informatie die ik niet hoefde toe te passen in eerdere delen van de opdracht zoals het gebruiken van variable, dit kwam later pas.
+- ik had perongeluk een typfout gemaakt in mijn script en daardoor kreeg ik een output met speciale tekens maar dit zag ik niet direct omdat het leek op een output.t=xt tegen maar het was een output.t≈xt hierdoor kon ik de file niet deleten met `rm` of `rm -f` ik moest hier uiteindelijk wel om lachen
 
+ 
 ### Resultaat
-[Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
+Door het runnen van het script en het lezen van de file output.txt met `cat output.txt`
+
+![outputscript](../00_includes/outputscript.png)
