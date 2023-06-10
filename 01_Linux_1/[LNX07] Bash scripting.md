@@ -4,14 +4,35 @@
 ## Key-terms
 [Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
 
+## Code Learned
+
+
 ## Opdracht
 
 # **Exercise 1:**
 
-- Create a directory called ‘scripts’. Place all the scripts you make in this directory.
-- Add the scripts directory to the PATH variable.
-- Create a script that appends a line of text to a text file whenever it is executed.
-- Create a script that installs the httpd package, activates httpd, and enables httpd. Finally, your script should print the status of httpd in the terminal.
+### Create a directory called ‘scripts’. Place all the scripts you make in this directory.
+
+1. Om te beginnen gaan we kijken in welke map we zitten met `pwd`
+
+    /home/jordan_
+
+    ![homefolder](/00_includes/%5BLNX07%5D%20Screenshots/LNX07HomeFolder.png)
+
+2. Hierin gaan we een nieuwe map aanmaken dit doen we met het volgende command `mkdir`
+
+    ![Alt text](../00_includes/%5BLNX07%5D%20Screenshots/Createhomefolder.png)
+
+3. vervolgens gaan we de scripts map die we net hebben aangemaakt in via `cd scipts`
+
+
+
+--
+#### Add the scripts directory to the PATH variable.
+1. Nu gaan we onze scripts directory toevoegen aan PATH variable zodat we deze later kunnen oproepen. We doen dit met de `export` command
+
+#### Create a script that appends a line of text to a text file whenever it is executed.
+#### Create a script that installs the httpd package, activates httpd, and enables httpd. Finally, your script should print the status of httpd in the terminal.
 
 # **Variables:**
 
