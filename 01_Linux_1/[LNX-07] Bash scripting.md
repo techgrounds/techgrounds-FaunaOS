@@ -59,6 +59,21 @@
     ![Alt text](../00_includes/%5BLNX07%5D%20Screenshots/Adddirectorytopathvariable.png)--
     
 #### Create a script that appends a line of text to a text file whenever it is executed.
+
+1. eerst gaan we een script file maken. om dit te doen gaan we de nano text editor gebruiken in linux. deze openen we door `nano` als command in te voeren en daarna de naam van de file die we aanmaken. we voegen hier .sh aan toe omdat we dan weten dat het een script file is.
+    ~~~~
+    nano bashy.sh
+    ~~~~
+2. nu moeten we aangeven op wat voor manier de text moet worden geinterperteerd dit doen we door middel van een `shebang` in ons geval is dan #!/bin/bash omdat de inhoud van het script in bash is.
+    ~~~~
+    #!/bin/bash
+    ~~~~
+3. nu moeten we de variable aangeven voor de text en het textbestand zodat we deze later kunnen aangeven bij het runnen van het script dit doen we op de volgende manier.
+    ~~~
+    line=This is my first script
+    file=output.text
+    ~~~
+
 #### Create a script that installs the httpd package, activates httpd, and enables httpd. Finally, your script should print the status of httpd in the terminal.
 
 # **Variables:**
