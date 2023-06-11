@@ -180,4 +180,4 @@ A check for a condition can be done using ‘if’, ‘elif’, and/or ‘else�
 ### Resultaat
 Door het runnen van het script en het lezen van de file output.txt met `cat output.txt`
 
-![outputscript](../00_includes/outputscript.png)
+![Alt text](<../00_includes/[LNX07] Screenshots/outputscript.png>)
