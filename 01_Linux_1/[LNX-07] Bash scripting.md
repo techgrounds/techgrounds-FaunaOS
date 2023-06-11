@@ -78,7 +78,56 @@
     echo "$line" >> "$file"
     ~~~
 
-#### Create a script that installs the httpd package, activates httpd, and enables httpd. Finally, your script should print the status of httpd in the terminal.
+### Create a script that installs the httpd package, activates httpd, and enables httpd. Finally, your script should print the status of httpd in the terminal.
+1. Om te beginnen maken we een nieuw script aan genaamd `apache2.sh`
+    ~~~
+    nano apache2.sh
+    ~~~
+2. Hierin gaan we een een instal command runnen. Daarna gaan we de service starten en een command om deze op enable te zetten.
+    ~~~
+    # Install the apache2 package
+    sudo yum install -y apache2
+
+    # Start the apache2 service
+    sudo systemctl start apache2
+
+    # Enable apache2 to start on boot
+    sudo systemctl enable apache2
+
+    # Check the status of apache2
+    status=$(sudo systemctl is-active apache2)
+
+    # Print the status
+    echo "apache2 Status: $status"
+    ~~~
+3. Als we het script een tweede keer zouden runnen maar deze al geinstalleerd is hoeven we dit niet nog een keer te doen dus met een if statement kunnen we het script zo aanpassen dat deze alleen de status aangeeft als apache2 al is enabled.
+    ~~~
+    #!/bin/bash
+
+    # Check if apache2 is already active
+    if sudo systemctl is-active --quiet apache2; then
+    echo "Apache2 is already active."
+    else
+    # Install the apache2 package
+    sudo apt-get update
+    sudo apt-get install -y apache2
+
+    # Start the apache2 service
+    sudo systemctl start apache2
+
+    # Enable apache2 to start on boot
+    sudo systemctl enable apache2
+
+    echo "Apache2 has been installed, started, and enabled."
+    fi
+
+    # Check the status of apache2
+    status=$(sudo systemctl is-active apache2)
+
+    # Print the status
+    echo "Apache2 Status: $status"
+    ~~~
+4. Nu kunnen we het script meerdere keren runnen zonder dat die blijft herinstalleren
 
 # **Variables:**
 
@@ -86,11 +135,27 @@ You can assign a value to a string of characters so that the value can be read s
 
 Assigning a variable is done using ‘=’.
 
-Reading the value of a variable is done using ‘$<insert variable name here>’.
+Reading the value of a variable is done using ‘$[insert variable name here]’.
 
 # **Exercise 2:**
 
-- Create a script that generates a random number between 1 and 10, stores it in a variable, and then appends the number to a text file.
+### Create a script that generates a random number between 1 and 10, stores it in a variable, and then appends the number to a text file.
+1. we maken een nieuw script met nano en noemen deze randomnumber.sh hierin gebruiken we de variable `random_number=$((1+random %10))` om een random getal te genereren tussen de 1 en 10, de rest van de code is om het getal te printen naar een nieuw bestand genaamd `random_numbers.txt`
+    ~~~
+    #!/bin/bash
+
+    # Generate a random number between 1 and 10
+    random_number=$((1 + RANDOM % 10))
+
+    # File to store the numbers
+    file_path="random_numbers.txt"
+
+    # Append the random number to the file
+    echo "$random_number" >> "$file_path"
+
+    echo "Random number $random_number appended to $file_path"
+    ~~~
+
 
 # **Conditions:**
 
