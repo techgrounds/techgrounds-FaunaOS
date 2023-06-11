@@ -32,16 +32,18 @@ df -h | grep /dev/root
 
 `/var/log/diskspaceweeklycheck.log`
 
-geen permission voor var/log
 
-dit betekend dat ik het script moet runnen als sudo
+
+3. Het werk nogsteeds niet misschien is er iets mis met mijn print naar de log zelf ik heb uiteindelijk de >> uit de cronjob gehaald en het script dit zelf laten printen.
+4. geen permission voor var/log
+5. dit betekend dat ik het script moet runnen als sudo
 
 ~~~
 30 22 * * 0 sudo /home/jordan_/scripts/diskspaceweeklycheck.sh
 ~~~
 ![Cronjob Working](../00_includes/Cronjobworks.png)
 
-Het werk nogsteeds niet misschien is er iets mis met mijn print naar de log zelf
+
 /var/log/diskspaceweeklycheck.log
 ### Gebruikte bronnen
 [Plaats hier de bronnen die je hebt gebruikt.]
