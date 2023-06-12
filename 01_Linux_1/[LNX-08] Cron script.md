@@ -30,31 +30,32 @@ df -h | grep /dev/root
 
 2. vevolgens gaan we een nieuw script aanmaken met nano. hierna moeten we in crontab de juiste tijd aangeven. omdat het nu bijna 23:15 is op zondag gaan we deze tijd erin zetten het m h * * 0 15 minuten 23 uur maand en dag van de maand doen we niet en dan een 0 voor zondag want 0 = zondag en 6 is zaterdag.
 
-`/var/log/diskspaceweeklycheck.log`
-
-
+    `/var/log/diskspaceweeklycheck.log`
 
 3. Het werk nogsteeds niet misschien is er iets mis met mijn print naar de log zelf ik heb uiteindelijk de >> uit de cronjob gehaald en het script dit zelf laten printen.
 4. geen permission voor var/log
 5. dit betekend dat ik het script moet runnen als sudo
 
-~~~
-30 22 * * 0 sudo /home/jordan_/scripts/diskspaceweeklycheck.sh
-~~~
-![Cronjob Working](../00_includes/Cronjobworks.png)
+    ~~~
+    30 22 * * 0 sudo /home/jordan_/scripts/diskspaceweeklycheck.sh
+    ~~~
+
+    ![CronjobWorking](../00_includes/Cronjobworks.png)
 
 
 /var/log/diskspaceweeklycheck.log
 ### Gebruikte bronnen
-[Plaats hier de bronnen die je hebt gebruikt.]
+
 
 ### Ervaren problemen
-[Geef een ko rte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
+
 - ik had een fout gemaakt in het absolute path in crontab waardoor hij het script niet kon vinden.
 - Wanneer ik het script zelf uitvoerde voegde die wel diskspaceweeklycheck.log toe aan var/log maar via cron niet. het duurde lang voordat ik hier over kwam en heb veel dingen geprobeerd om dit op te lossen.
 - Het lijkt me persoonlijk geen goed idee om sudo scripts te draaien maar omdat het de opdracht is ben ik er mee door gegaan. ik had zelf eerder een log file in een eigen map gemaakt.
 
+- Verder had ik de UTC tijd verkeerd
 
-Verder had ik de UTC tijd verkeerd
 ### Resultaat
 [Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
+
+![Diskspacecheckscript](<../00_includes/LNX-08 Cronjob/DIskspaceweeklycheck.png>)
