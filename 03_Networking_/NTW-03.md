@@ -115,3 +115,8 @@ Wanneer er duplicaat-acknowledgements (ACKs) binnen TCP zijn, duidt dit meestal 
 `Netwerkcongestie:` Hoge netwerkcongestie kan vertragingen en pakketverlies veroorzaken. Wanneer congestie optreedt, treedt TCP's congestiebeheermechanisme in werking, wat leidt tot retransmissies en het genereren van duplicaat-ACKs. De zender kan meerdere ACKs ontvangen voor hetzelfde sequentienummer, wat aangeeft dat de ontvanger nog steeds wacht op een ontbrekend pakket.
 
 Het is belangrijk op te merken dat niet alle duplicaat-ACKs wijzen op ernstige netwerkproblemen. In sommige gevallen kunnen ze normaal gedrag zijn wanneer TCP zich aanpast aan veranderende netwerkcondities. Als duplicaat-ACKs echter aanhouden of vaak voorkomen, kan dit duiden op een probleem dat moet worden onderzocht, zoals netwerkcongestie, pakketverlies of een onjuiste netwerkconfiguratie.
+
+## Bronnen
+https://www.youtube.com/watch?v=RTJLbXEqBhM
+
+https://www.youtube.com/watch?v=Hq-nOMEPh4U
