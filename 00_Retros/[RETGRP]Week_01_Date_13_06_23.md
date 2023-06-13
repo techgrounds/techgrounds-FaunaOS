@@ -5,8 +5,8 @@
 **Individuele Retro's**  
 **Jeroen | Shamim | Marcel | Jordan**  
 
-## **Samenvatting  Groep 3**
-**Jeroen | Shamim | Marcel | Jordan**
+## **Samenvatting**
+
 
 ### Wat deden we goed?
 
