@@ -46,10 +46,10 @@
 ## **Shamim**
 
 ### Terugblik
-- De eerste week was erg zwaar voor mij, maar ook super leuk. Ik heb heel veel geleerd.
-- Ik besef heel goed dat anderen meer of in sommige gevallen veel meer kennis hebben dan ik, maar daardoor laat ik me niet afschrikken.
-- Ik ben nieuw in dit veld en moet dus vanaf het begin beginnen, veel vragen stellen en meer uitzoeken, en dat neemt wel veel tijd in beslag.
-- Het voelde alsof ik me in een jungle van systemen en commands waande, maar heb veel hulp gehad van de heren in mijn groep, vooral Jordan na onze les.
+De eerste week was erg zwaar voor mij, maar ook super leuk. Ik heb heel veel geleerd.
+Ik besef heel goed dat anderen meer of in sommige gevallen veel meer kennis hebben dan ik, maar daardoor laat ik me niet afschrikken. 
+Ik ben nieuw in dit veld en moet dus vanaf het begin beginnen, veel vragen stellen en meer uitzoeken, en dat neemt wel veel tijd in beslag. 
+Het voelde alsof ik me in een jungle van systemen en commands waande, maar heb veel hulp gehad van de heren in mijn groep, vooral Jordan na onze les.
 
 ### Wat ging goed?
 - **Goede samenwerking:** We hebben voor onze presentatie Google Drive gebruikt en daarmee zaten we op één lijn en leverden een mooie presentatie.
