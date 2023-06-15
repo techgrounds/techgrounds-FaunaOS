@@ -11,6 +11,7 @@ NAT vertaalt dit naar private IP
 ### Ontdek wat je privé IP adres is van je laptop en mobiel op wifi.
 `ipconfig getifaddr en0`
 
+
 ### Zijn de adressen hetzelfde of niet? Leg uit waarom.
 
 - Omdat de NAT in de router elk apparaat een ander prive adress geeft.Data die binnenkomt via de wifi weet dan welk apparaat de data naartoe moet.
