@@ -43,9 +43,22 @@ sudo nano /etc/apache2/apache2.conf
 Hier staat het niet in.
 Het lijkt erop dat de standaard port nummer 80 is.
 Nu ik port 80 open heb gezet zou ik verwachten dat webverkeer wel mogelijk is.
-We gaan eens kijken in de webbrowser binnen linux
+We hebben hiervoor het public IP adress nodig van de server
 
-Controleer of de firewall zijn werk doet.
+~~~
+curl ifconfig.me
+~~~
+~~~
+3.121.130.219
+jordan_@Nest-jo-Hodge:~$ 
+~~~
+Het werkt niet dus er staat nog duidelijk iets niet goed
+Laten we eens gaan kijken wat er gebeurd als we alles open zetten.
+~~~
+![Firewall Active statust](<Firewall Active.png>)
+~~~
+
+## Controleer of de firewall zijn werk doet.
 
 
 ### Gebruikte bronnen
