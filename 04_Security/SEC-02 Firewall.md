@@ -54,9 +54,9 @@ jordan_@Nest-jo-Hodge:~$
 ~~~
 Het werkt niet dus er staat nog duidelijk iets niet goed
 Laten we eens gaan kijken wat er gebeurd als we alles open zetten.
-~~~
-![Firewall Active statust](<Firewall Active.png>)
-~~~
+
+![Active Firewall](<../00_includes/SEC02/Firewall Active.png>)
+
 
 ## Controleer of de firewall zijn werk doet.
 
