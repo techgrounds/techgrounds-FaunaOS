@@ -57,15 +57,35 @@ Laten we eens gaan kijken wat er gebeurd als we alles open zetten.
 
 ![Active Firewall](<../00_includes/SEC02/Firewall Active.png>)
 
+Hij werkt nog niet we gaan nu controlleren of het poort nummer wel klopt
+De SSH poort is 52---
+De Web Poort is 58---
+
+Via de Web Poort lukt het wel om bij de webserver te komen
+![Webserver](../00_includes/SEC02/Webserver.png)
+
+Als laatste gaan we poort 80 blokkeren
+Daarna herstarten we de firewall om de verandering actief te maken.
+
+~~~
+sudo ufw deny 80
+&
+sudo service ufw restart
+~~~
 
 ## Controleer of de firewall zijn werk doet.
-
+We kunnen niet meer verbinden met de webserver
 
 ### Gebruikte bronnen
 [Plaats hier de bronnen die je hebt gebruikt.]
 
+
 ### Ervaren problemen
 [Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
+Ik had de verkeerde poort voor de webserver namelijk dezelfde als de ssh poort
+Het duurde erg lang voordat ik hier achter kwam.
+Hierdoor heb ik wel heel veel dingen geprobeerd en geleerd dus dat is mooi.
+Na het gebruiken van het juiste poort nummer was de opdracht snel gemaakt
 
 ### Resultaat
 [Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
