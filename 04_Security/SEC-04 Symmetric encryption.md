@@ -38,6 +38,13 @@ Historic Cipher: One of the famous historic ciphers is the Vigenère cipher. The
     So the plan is to do the following.
     
     1. Create a image file with inside a text file with the mission and SAE encryption key for the actual
+
+    Mission
+    Kunnen jullie mij het volgende opsturen.
+    Vincent: Plaatje van Neo van de Matrix
+    Kaman: Plaatje van het nummer 8
+    Marcel: Plaatje van walter uit breaking bad
+
     We will put these inside a folder on our desktop and then we will try to use the `cat` command to join these files together.
 
     So i got stuck because the image i created got compressed by slack and lost the message
@@ -52,8 +59,11 @@ Historic Cipher: One of the famous historic ciphers is the Vigenère cipher. The
     We kunnen ook met openssl keys generaten in linux
     https://blastoise.hashnode.dev/aes-encryption-in-linux
 
+Generating 128 or 256 keys
 ~~~
 openssl version
+openssl rand -hex 16
+openssl rand -hex 32
 ~~~
 
 ### Steps:
