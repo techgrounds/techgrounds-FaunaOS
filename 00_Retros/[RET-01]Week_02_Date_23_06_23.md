@@ -3,6 +3,7 @@
 - **Goed groepje:** Wederom hadden we deze week een groep met veel kennis. Marcel en Kaman begrepen de concepten goed en konden bijspringen waar ik het even niet begreep.
 
 - **Waardevolle hulp:** Na een paar dagen liep ik wat achter met de opdrachten op de rest van de groep. Ik bleef hangen op de firewall maar na een tip van Marcel over het opzoeken van de juiste poort kwam ik snel verder.
+- Ook de hulp die ik kreeg bij de presentatie was erg fijn we hadden niet veel tijd en door iedereen zijn hulp is het gelukt om een goede presentatie neer te zetten.
 
 - **Betrokkenheid:** Iedereen hielp me toen ik bij opdracht 4 & 5 was aangekomen waarbij we met elkaar encrypted berichten moesten versturen. Dit zelf terwijl ze zelf al verder waren met de opdrachten.
 
