@@ -1,23 +1,25 @@
+# Retro week 2
+
 ## **Wat ging er goed?**
 
-- **Goed groepje:** Wederom hadden we deze week een groep met veel kennis. Marcel en Kaman begrepen de concepten goed en konden bijspringen waar ik het even niet begreep.
+- **Goed groepje:** Deze week hadden we een deskundig groepje. Marcel en Kaman begrepen de concepten goed en waren behulpzaam als ik ergens moeite mee had.
 
-- **Waardevolle hulp:** Na een paar dagen liep ik wat achter met de opdrachten op de rest van de groep. Ik bleef hangen op de firewall maar na een tip van Marcel over het opzoeken van de juiste poort kwam ik snel verder.
-- Ook de hulp die ik kreeg bij de presentatie was erg fijn we hadden niet veel tijd en door iedereen zijn hulp is het gelukt om een goede presentatie neer te zetten.
+- **Waardevolle hulp:** Na een paar dagen raakte ik achterop met de opdrachten ten opzichte van de rest van de groep. Ik bleef steken bij de firewall, maar dankzij een tip van Marcel over het opzoeken van de juiste poort kon ik snel verder.
 
-- **Betrokkenheid:** Iedereen hielp me toen ik bij opdracht 4 & 5 was aangekomen waarbij we met elkaar encrypted berichten moesten versturen. Dit zelf terwijl ze zelf al verder waren met de opdrachten.
+- **Hulp bij presentatie:** Ik kreeg ook waardevolle hulp bij de presentatie. Omdat we weinig tijd hadden, lukte het ons dankzij de hulp van iedereen om een goede presentatie neer te zetten.
 
-- **Information retrieval:** Veel van de informatie uit de presentaties en de opdrachten is blijven hangen wat er heeft geholpen bij de knowledge check.
+- **Betrokkenheid:** Toen ik bij opdracht 4 en 5 aankwam, waarbij we versleutelde berichten moesten versturen, kreeg ik veel hulp van iedereen, ook al waren ze al verder met de opdrachten.
 
-- **Leuk** Paar keer leuke gespreken gehad over onderwerpen buiten de opdrachten om. Vincent stelde vaak leuke vragen en heb er genoten van iedereen zijn input deze week.
+- **Informatie behouden:** Ik kon veel informatie uit de presentaties en opdrachten onthouden, wat me hielp bij de toets over de behandelde stof.
+
+- **Leuke interacties:** We hadden een paar leuke gesprekken over onderwerpen die niet direct met de opdrachten te maken hadden. Vincent stelde interessante vragen en ik heb genoten van de input van iedereen deze week.
 
 ## **Wat kan er beter?**
 
-- **Documentation:** Ik had beter kunnen documenteren in Markdown. Nu is veel van mijn GitHub nog erg rommelig en missen er veel stappen die ik heb genomen.
+- **Documentatie:** Ik had beter kunnen documenteren in Markdown. Nu is mijn GitHub nogal rommelig en ontbreken er veel stappen die ik heb genomen.
 
-- **Snelheid:** Na een paar dagen liep ik achter met de opdrachten. Dit misschien ook wel omdat ik veel ging uitproberen buiten de opdrachten om.
-
+- **Snelheid:** Na een paar dagen liep ik achter met de opdrachten. Dit kwam waarschijnlijk doordat ik veel dingen buiten de opdrachten om aan het uitproberen was.
 
 ## **Wat kunnen wij doen om het te verbeteren?**
 
-- **Checkins:** Misschien door de dag heen ook eens vragen waar iedereen is. Niet dat dat niet gebeurde maar als we dan merken dat iemand achter loop even vragen of die hulp nodig heeft of waar die niet uit komt.  Dit werd goed gedaan maar is daarom extra waardevol om vaker te doen.
+- **Check-ins:** Misschien is het een idee om gedurende de dag te vragen waar iedereen staat. Hoewel dit al goed werd gedaan, kan het waardevol zijn om vaker te controleren of iemand achterloopt en hulp nodig heeft of ergens vastloopt.
