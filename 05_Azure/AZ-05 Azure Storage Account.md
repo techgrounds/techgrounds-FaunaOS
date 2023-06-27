@@ -10,17 +10,32 @@ Veel IaaS en PaaS services van Azure maken ook gebruik van Azure Storage Account
 Naast het opslaan van data kan Blob Storage ook gebruikt worden voor het hosten van statische websites.
 
 ## Key-terms
-Blob Binary Large Object
-File
-Table
-Queue
-Disk
+Blob Binary Large OBject - file
+File - Shared drive protocols
+Table - 
+Queue Storage - Storage for small pieces of data (Messages)
+Disk - 
 
 Structured Data
 Semi-Structured
 Unstructured
 
+Three storage tiers
+- Hot - frequently accessed data
+- Cool - infrequently accessed data
+- Archive - rarely (if-ever) accessed data
+
 ## Opdracht
+### Maak een Azure Storage Account. Zorg dat alleen jij toegang hebt tot de data.
+- We gaan beginnen met het aanmaken van een azure storage account.
+- We kiezen hierbij voor de volgende opties
+- 
+
+Plaats data in een storage service naar keuze via de console (bijvoorbeeld een kattenfoto in Blob storage).
+
+Haal de data op naar je eigen computer door middel van de Azure Storage Explorer.
+
+
 ### Gebruikte bronnen
 [Plaats hier de bronnen die je hebt gebruikt.]
 
