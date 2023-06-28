@@ -29,18 +29,41 @@ Three storage tiers
 ### Maak een Azure Storage Account. Zorg dat alleen jij toegang hebt tot de data.
 - We gaan beginnen met het aanmaken van een azure storage account.
 - We kiezen hierbij voor de volgende opties
-- 
+![Public acces](<../00_includes/AZ-02/Public Acces.png>)
+![Settings1](../00_includes/AZ-02/Settings1.png)
+![Settings2](../00_includes/AZ-02/Settings2.png)
 
-Plaats data in een storage service naar keuze via de console (bijvoorbeeld een kattenfoto in Blob storage).
+### Plaats data in een storage service naar keuze via de console (bijvoorbeeld een kattenfoto in Blob storage).
+1. Go to the Azure portal (https://portal.azure.com) and sign in to your Azure account.
+2. Navigate to the storage account you created by searching for "Storage accounts" in the search bar at the top.
+3. Click on the name of your storage account to open its overview page.
+4. In the left-hand menu, under the "Data service" section, click on "Containers."
+5. On the Containers page, click on the "+ Container" button to create a new container.
+6. Provide a unique name for the container (cloudcontainer11), choose its access type (e.g., private, public), and configure any additional settings as needed. Then click on "Create" to create the container.
+7. Once the container is created, click on its name to open it. `See Problems`
+8. In the container view, you will see the option to upload files or folders. You can either drag and drop files into the container or use the "Upload" button to browse and select files from your local machine.
+9. Select the files you want to upload and click on "Upload" to start the upload process.
+10. The files will be uploaded to the storage container, and you can monitor the progress in the Azure portal. Once the upload is complete, you can access and manage your data within the storage container.  
 
-Haal de data op naar je eigen computer door middel van de Azure Storage Explorer.
+![Cat picture](../00_includes/AZ-02/moaz-tobok-awhhikacuTM-unsplash.jpg)
+Upload
+![Upload](<../00_includes/AZ-02/Image Uploaded.png>)
 
+### Haal de data op naar je eigen computer door middel van de Azure Storage Explorer.
+Download
+![Download](../00_includes/AZ-02/Imagedownload.png)
 
 ### Gebruikte bronnen
-[Plaats hier de bronnen die je hebt gebruikt.]
+https://www.youtube.com/watch?v=sI2ahWX8RH8
+https://www.youtube.com/watch?v=Ya27vqnI_5A
+
+https://learn.microsoft.com/en-gb/azure/storage/common/storage-network-security?tabs=azure-portal
 
 ### Ervaren problemen
-[Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
+1. Het lijkt erop dat ik geen toegang heb tot de contrainer die ik zojuist heb aangemaakt.
+    We gaan uitzoeken waardoor dit komt
+    ![Noaccess](../00_includes/AZ-02/Az02error.png)
+2. Ik weet niet zeker of met de console CLI wordt bedoeld of gewoon de Azure console
 
 ### Resultaat
-[Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
+![Firewall setting](<../00_includes/AZ-02/Firewall setting.png>)
