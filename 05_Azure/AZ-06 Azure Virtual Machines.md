@@ -45,6 +45,8 @@ systemctl restart apache2
 
 ### Gebruikte bronnen
 Niet echt veel gewoon door de stappen van de opdracht heen gegaan.
+
+Deze rescourse gevonden voor later over TLS/SSL gebruiken om de verbinding of webserver secure te maken
 https://learn.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-secure-web-server
 
 ### Ervaren problemen
@@ -53,4 +55,7 @@ Ik had file download uitstaan dus ik moest deze goedkeuren hierdoor kon ik mijn 
 ### Resultaat
 Deze keer heb ik wel poort 22 en 80 gedaan.
 ![Webserver](<../00_includes/AZ-02/Webserver working.png>)
+
+Deleted VM
+![DeleteRgroup](../00_includes/AZ-02/DeleteRgroup.png)
 
