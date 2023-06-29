@@ -53,17 +53,45 @@ Upload
 1. download file explorer
 https://azure.microsoft.com/en-gb/products/storage/storage-explorer/
 2. Sign in bij azure
-![storage](<../00_includes/AZ05/findstorage account.png>)
-3. ![Alt text](<../00_includes/AZ05/file explor.png>)
+![Alt text](../00_includes/AZ05/Signin.png)
+3. vind je storage account
+![Alt text](<../00_includes/AZ05/findstorage account.png>)
 
-Download
+## Download
 ![fileexplor](<../00_includes/AZ05/file explor.png>)
 
 ### Opdracht 2
 #### Maak een nieuwe container aan.
+![Alt text](../00_includes/AZ05/awsdemocontrainer.png)
 #### Upload de 4 bestanden die samen de AWS Demo Website vormen.
+- download de bestanden uit de map week 4 drive cloud 11
+![Alt text](../00_includes/AZ05/Uploaddemofiles.png)
 #### Zorg dat Static Website Hosting aan staat.
+--> https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website-how-to?tabs=azure-portal
+- We gaan hier naar de overview page van onze storage account
+- Zorg voor een index en error .html file
+![Alt text](../00_includes/AZ05/Enablestaticwebsite.png)
+- Vergeet niet op save te klikken
+![Alt text](../00_includes/AZ05/$web.png)
+
+- nu hebben we een $web container
+- Ik snap niet waarom de opdracht zegt maar een container aan als we later een speciale $webcontainer maken
+- maargoed we gaan de files nog een keer uploaden en nu in onze $web container 
+![Alt text](../00_includes/AZ05/Webcontraineruploadedfiles.png)
+- Oke nu deleten we die eerder gemaakte awsdemo contrainer
+- we gaan we de url opzoeken voor onze $webcontainer
+https://faunastorage.blob.core.windows.net/$web
+- hij werkt niet want we hebben geen public acces
+![Alt text](../00_includes/AZ05/Noaccespublichttp.png)
+- oke we moesten de link vanuit static website menu hebben 
+https://faunastorage.z33.web.core.windows.net/
+![Alt text](../00_includes/AZ05/staticlink.png)
+
+En hier is de website
+![Alt text](../00_includes/AZ05/AWSstatic.png)
+- als die het niet doet voor jou dan voeg ik je IP adress toe aan de firewall stuur me maar een msg
 #### Deel de URL met een teamgenoot. Zorg ervoor dat zij de website kunnen zien.
+- Gedeeld met Shamim
 
 
 ### Gebruikte bronnen
@@ -71,7 +99,7 @@ https://www.youtube.com/watch?v=sI2ahWX8RH8
 https://www.youtube.com/watch?v=Ya27vqnI_5A
 
 https://learn.microsoft.com/en-gb/azure/storage/common/storage-network-security?tabs=azure-portal
-
+https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website
 ### Ervaren problemen
 1. Het lijkt erop dat ik geen toegang heb tot de contrainer die ik zojuist heb aangemaakt.
     We gaan uitzoeken waardoor dit komt
