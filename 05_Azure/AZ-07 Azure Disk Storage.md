@@ -104,9 +104,15 @@ umount /dev/sdc1 /data/
 - nu kunnen we hem wel veranderen naar shared
 ![Shared Disk change](../00_includes/AZ-07/Shareddiskchange.png)
 - Nu die op shared staat ga ik kijken of ik de rescource groups kan samenvoegen van vm1 en vm2 ik heb hier bij het aanmaken niet goed op gelet en ze hebben nu een andere rescourcegroup
-
-
+- de rescources groups zijn nu samen gevoegd
+- nu gaan we kijken of we een file kunnen maken en deze via de shared disk op biede vms kunnen zien
+- De disk is zichtbaar 
+![diskvm1](../00_includes/AZ-07/Diskvm1.png)
+- nu gaan we de disk mounten op vm1 net als bij vm2
+- Het lijkt erop dat we niet dezelfde folder kunnen mounten op vm1 die we in vm2 hebben gemaakt
 ~~~
+#we gaan eerst naar de root
+sudo -s
 #mount filesystem
     mount /dev/sdc1 /data/
 #list filesystem
@@ -116,19 +122,63 @@ umount /dev/sdc1 /data/
     blkid
 #edit /etc/fstab
 #pasta UID
-    UUID="ab8b4a79-822b-43d2-b32a-b78192d5dc03 /data ext4 defaults 0 0
+    UUID=ab8b4a79-822b-43d2-b32a-b78192d5dc03 /data ext4 defaults 0 0
 #now we mount the filesystem
     mount -a
 #see disks
     lsblk
 #now we see that the disk is mounted
 ~~~
+- Dit lijkt ook niet te werken nu blijft er nog de optie over om een snapshot te maken met de file en deze te mounten op vm1
+- We hebben nu op de disk in /data/filefolder een bestand textfile.txt gemaakt en we gaan nu kijken of we deze na een snapshot en een nieuwe disk aanmaken kunnen mounten op vm1
+- Ik heb ook de permissions aangepast zodat het bestand wel door andere users gelezen kan worden maar niet geedit zodat er geen text ingezet kunnen worden vanuit de andere vm
+![747](../00_includes/AZ05/747.png)
+- Ik heb de vorige disk verwijdert en nu de nieuwe shareddisk met de snapshot met de file attached aan vm1 in azure portal
+- Nu moeten we de shareddisk gaan mounten hiervoor hebben we verschillende commands nodig
+~~~
+#we gaan eerst wisselen naar de root
+sudo -s
+#nu gaan we kijken waar onze schijf zich bevind
+lsblk
+#hij bevind zich op sdc1
+~~~
+![part](../00_includes/AZ-07/Partlocation.png)
+- Onze volgende stap wordt om een directory te maken zodat we onze schrijf kunnen mounten
+~~~
+cd /
+mkdir opdracht
+~~~
+ ![Alt text](../00_includes/AZ-07/mkdir.png)
+ Vervolgens gaan we de disk mounten om te weten waar gebruiken we de volgende command
+~~~
+#filesystem
+df -h
+~~~
+![filesystem](../00_includes/AZ-07/filesystem.png)
+- Nu nemen we dit pad om in onze aangemaakte opdracht directory de schijf te mounten
+~~~
+mount /dev/sdc1 /opdracht
+~~~
+- Nu gaan we kijken of het gelukt is dit doen we wederom met `df -h`  
+![result](../00_includes/AZ-07/result.png)
+- Hierna gaan we naar de folder om te zien of onze file daar staat
+~~~
+#om uit de root te gaan
+exit
+#om naar onze map te gaan
+cd /opdracht
+#om te zien of onze folder van de shareddisk erstaat
+ls -l
+~~~
+![Alt text](../00_includes/AZ-07/vm2file.png)
+- Het is gelukt om het bestand te openen.
 
 ### Gebruikte bronnen
 https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types  
 https://www.youtube.com/watch?v=f_9okkunX40  
 https://learn.microsoft.com/en-us/azure/virtual-machines/linux/detach-disk  
 
+https://learn.microsoft.com/en-us/answers/questions/445559/i-cannot-see-data-on-my-shared-disk-on-my-second-a
 
 ### Ervaren problemen
 Double mount 
