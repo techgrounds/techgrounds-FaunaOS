@@ -25,7 +25,7 @@ Three storage tiers
 - Cool - infrequently accessed data
 - Archive - rarely (if-ever) accessed data
 
-## Opdracht
+## Opdracht 1
 ### Maak een Azure Storage Account. Zorg dat alleen jij toegang hebt tot de data.
 - We gaan beginnen met het aanmaken van een azure storage account.
 - We kiezen hierbij voor de volgende opties
@@ -50,8 +50,21 @@ Upload
 ![Upload](<../00_includes/AZ-02/Image Uploaded.png>)
 
 ### Haal de data op naar je eigen computer door middel van de Azure Storage Explorer.
+1. download file explorer
+https://azure.microsoft.com/en-gb/products/storage/storage-explorer/
+2. Sign in bij azure
+![storage](<../00_includes/AZ05/findstorage account.png>)
+3. ![Alt text](<../00_includes/AZ05/file explor.png>)
+
 Download
-![Download](../00_includes/AZ-02/Imagedownload.png)
+![fileexplor](<../00_includes/AZ05/file explor.png>)
+
+### Opdracht 2
+#### Maak een nieuwe container aan.
+#### Upload de 4 bestanden die samen de AWS Demo Website vormen.
+#### Zorg dat Static Website Hosting aan staat.
+#### Deel de URL met een teamgenoot. Zorg ervoor dat zij de website kunnen zien.
+
 
 ### Gebruikte bronnen
 https://www.youtube.com/watch?v=sI2ahWX8RH8
@@ -62,7 +75,7 @@ https://learn.microsoft.com/en-gb/azure/storage/common/storage-network-security?
 ### Ervaren problemen
 1. Het lijkt erop dat ik geen toegang heb tot de contrainer die ik zojuist heb aangemaakt.
     We gaan uitzoeken waardoor dit komt
-    ![Noaccess](../00_includes/AZ-02/Az02error.png)
+    ![Alt text](../00_includes/AZ05/Noacces.png)
 2. Ik weet niet zeker of met de console CLI wordt bedoeld of gewoon de Azure console
 
 ### Resultaat

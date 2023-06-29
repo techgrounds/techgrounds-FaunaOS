@@ -83,20 +83,29 @@ ls -l
 #see disks
     lsblk
 #now we see that the disk is mounted
+![Alt text](../00_includes/AZ-07/Mounted.png)
 ~~~
 
 - nu we dit gedaan hebben voor on vm2 gaan we dit ook doen voor vm1
 - We reloggen naar vm1
 - we nemen hierbij de stappen net na het partitionen en voor het mounten
-- eerst moeten we de disk toevoegen in azure portal
+- eerst moeten we de disk toevoegen in azure portal 
 - het blijkt dat ik geen shared disk heb geselecteerd bij het aanmaken van de 'shared disk'
-- nu stop ik vm2 en ga ik kijken of ik de disk kan demounten en er een shared disk van kan maken.
+- nu stop ik vm2 en ga ik kijken of ik de disk kan demounten en er een shared disk van kan maken. (Nee dit kan dus alleen via de command line via unmount [diskpath])
 - Oke we moeten weer terug naar vm2 om hem via de command line the detachen
 ~~~
 umount /dev/sdc1 /data/
 ~~~
-- We doen nu even alleen unmounten en laten de automount in de etc/fstab staan 
-- 
+- We doen nu even alleen unmounten en laten de automount in de etc/fstab staan en hopen dat we dan hem shared kunnen maken en niet opnieuw de UUID uit de /etc/fstab hoeven te halen en weer erin 
+![Unmount](../00_includes/AZ-07/unmount.png)
+- Nu gaan we vm2 in azure portal stoppen en kijken of we de shared disk kunnen veranderen naar shared --> als dit niet lukt ga ik een nieuwe disk aanmaken die wel shared is. dat wilde ik in eerste instantie al doen maar ook wel goed om te weten of dit ook kan ivm data die er bijvoorbeeld al op staat --> we kunnen dan natuurlijk wel met een snapshot en een nieuwe disk de data bewaren maar dan moeten we de snapshot maken na het formarteren lijkt mij? of zou de snapshot al geformateerd zijn?
+- oke het was een stuk simpeler dan ik dacht, ik moet hem van de vm afhalen in azure portal
+![Detach](<../00_includes/AZ-07/Detaching disk.png>)
+- nu kunnen we hem wel veranderen naar shared
+![Shared Disk change](../00_includes/AZ-07/Shareddiskchange.png)
+- Nu die op shared staat ga ik kijken of ik de rescource groups kan samenvoegen van vm1 en vm2 ik heb hier bij het aanmaken niet goed op gelet en ze hebben nu een andere rescourcegroup
+
+
 ~~~
 #mount filesystem
     mount /dev/sdc1 /data/
@@ -116,8 +125,10 @@ umount /dev/sdc1 /data/
 ~~~
 
 ### Gebruikte bronnen
-https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types
-https://www.youtube.com/watch?v=f_9okkunX40
+https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types  
+https://www.youtube.com/watch?v=f_9okkunX40  
+https://learn.microsoft.com/en-us/azure/virtual-machines/linux/detach-disk  
+
 
 ### Ervaren problemen
 Double mount 
