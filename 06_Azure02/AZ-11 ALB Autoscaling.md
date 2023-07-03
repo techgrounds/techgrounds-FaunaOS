@@ -7,6 +7,8 @@ Autoscaling
 
 # Opdracht
 ## Opdracht 1:
+
+# Sessie 1
 - Maak een Virtual Machine Scale Set met de volgende vereisten:
     - Ubuntu Server 20.04 LTS - Gen1
         - Size: Standard_B1ls
@@ -101,21 +103,88 @@ systemctl restart apache2
 https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/quick-create-portal
 
 - Ik ga dit straks vragen aan mijn collega's
-- Tijd om loadbalancer te onderzoeken
+- Tijd om loadbalancer dieper te onderzoeken
+
+# Sessie 2
+
+- We gaan nu beginnen met het aanmaken van een loadbalancer en daarbij zorgen we ook voor een frontend IP en een backendpool
+- De backend pool geeft aan welke vms verbonden zijn aan de loadbalancer
+- de frontendip geeft aan wat ons IP is 
+
+- We gaan nu de firewall open zetten voor de 2 poorten 22 en 80 ssh en http
+![nsgallow](../00_includes/AZ-11/NSG.png)
+- als we nu naar de ip van onze vm gaan komen we uit bij de webserver
+- of dit nu via mijn loadbalancer gaat is mij niet duidelijk
+- Het ip van de loadbalancer is 
+~~~
+51.143.226.44 (az11publicip)
+~~~
+Na het instellen van onze loadbalancer met een port 80 allow rule kunnen we via het loadbalancer public ip adress inloggen op onze apache webserver
+![LB webserver](../00_includes/AZ-11/LBwebserver.png)
 
 ---
 
 ## Opdracht 2:
-Controleer of je via het endpoint van je load balancer bij de webserver kan komen.
-Voer een load test uit op je server(s) om auto scaling the activeren. Er kan een delay zitten in het creëren van nieuwe VMs, afhankelijk van de settings in je VM Scale Set.
+## ontroleer of je via het endpoint van je load balancer bij de webserver kan komen.
+- Het ip van de loadbalancer is 
+~~~
+51.143.226.44 (az11publicip)
+~~~
+Na het instellen van onze loadbalancer met een port 80 allow rule 
+![allowrulelb](../00_includes/AZ-11/LBwebserver.png)
+kunnen we via het loadbalancer public ip adress inloggen op onze apache webserver
+![LB webserver](../00_includes/AZ-11/LBwebserver.png)
 
+## Voer een load test uit op je server(s) om auto scaling the activeren. Er kan een delay zitten in het creëren van nieuwe VMs, afhankelijk van de settings in je VM Scale Set.
+- Van uit rescources gaan we zoeken naar azure load testing.
+- we kiezen voor azure load testing
+- 50 gebruikers met op ip http://51.143.226.44/ (onze webserver)
+- we hebben onze rescource group toegevoegd en gaan nu kijken of we een load test kunnen uitvoeren.
+- ![Loadtestvmmetrics](Loadtest.png)
+- De test leek niet genoeg om onze vm scaleset te activeren
+- nu gaan we het proberen met 100 gebruikers
+- Ook lijkt 100 niet genoeg om 75% cpu te triggeren
+![100](../00_includes/AZ-11/100users.png)
+- 2500 ook niet dus we moeten via ssh gaan inloggen om een stress test te gaan doen
+- Daarvoor moet ik nog even poort 22 open zetten
+- We gaan direct op de vm inloggen dus niet via de loadbalancer onze ssh verbinding starten en hebben we dus het volgende ip nodig 
+~~~
+ sudo ssh -i ~/.ssh/az11vmuser1@20.0.206.254 
+~~~
+Nu gaan we een stress test uitvoeren via onze linux vm met het programma stress
+
+sudo apt-get update
+sudo apt-get install stress
+
+nu gaan we de cpu stressen met de volgende command
+~~~
+sudo stress-ng --cpu 4 --timeout 600
+~~~
+- we openen ook een 2de terminal windows om via `htop` onze rescources te zien
+![htop](../00_includes/AZ-11/stresstesthtop.png)
+
+- Het is gelukt
+![Stresstest](<../00_includes/AZ-11/Stress test.png>)
+- Zelfs met 4 vm
+![4vms](../00_includes/AZ-11/4vms.png)
+
+----
 
 ### Gebruikte bronnen
+
 https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal)¹.
 
 (1) Quickstart - Create a Virtual Machine Scale Set in the Azure portal .... https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/quick-create-portal.
 (2) Create virtual machines in a scale set using Azure portal. https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal.
 
+Load balancer
+https://learn.microsoft.com/en-us/azure/load-balancer/components
+
+Public Load Balancer
+https://learn.microsoft.com/en-us/azure/load-balancer/quickstart-load-balancer-standard-public-portal
+
+Stress test
+https://www.tecmint.com/linux-cpu-load-stress-test-with-stress-ng-tool/
 
 ### Ervaren problemen
 [Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
