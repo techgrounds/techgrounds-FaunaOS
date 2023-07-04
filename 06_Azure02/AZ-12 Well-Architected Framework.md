@@ -1,4 +1,4 @@
-# [Well-Architected Framework]
+# Well-Architected Framework
 Well-Architected Framework
 
 ## Introductie:  
