@@ -68,9 +68,9 @@ By following this implementation process, organizations can leverage the capabil
 
 ----
 1 uur video van microsoft:
-Use the Azure Well Architected Framework to optimize your … - https://www.youtube.com/watch?v=CzIZ9GqX6KE3
+Use the Azure Well Architected Framework - https://www.youtube.com/watch?v=CzIZ9GqX6KE3
 
-Hier heb ik het volgende uit gehaald
+Hier heb ik het volgende uit de eerste 30 minuten gehaald
 
 **How to Use the Well-Architected Methodology:**
 

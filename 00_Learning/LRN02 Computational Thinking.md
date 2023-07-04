@@ -3,6 +3,9 @@ Computational thinking is a problem-solving approach that involves breaking down
 
 # Quick Overview
 
+![Titel Image](../00_includes/LRN02/TitelComputational.png)
+
+---
 
 ## **Computational Thinking:**
 
@@ -27,7 +30,14 @@ Computational thinking is a problem-solving approach that involves breaking down
    - Determine the order and dependencies of the steps.
    - Plan for inputs and outputs.
 
+
+---
+
+
 ## **Problem Decomposition:**
+![Alt text](../00_includes/LRN02/Titel2.png)
+
+---
 
 1. **Identify Learning Goals:**
    - Define specific learning goals and objectives for using the Azure portal.
