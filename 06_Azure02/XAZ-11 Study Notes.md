@@ -6,3 +6,37 @@ https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview
 
 ---
 
+# Microsoft learn
+
+### Key Terms
+- IaaS  
+Infrastructure as a service
+- PaaS  
+Platform as a service
+- Saas  
+Software as a service
+
+- OpEx
+operating expense
+
+- Vertical scaling
+Scaling up
+
+- Horizontal scaling
+Scaling out
+
+- satisfy service-level agreements (SLAs)
+
+- Recovery point objective (RPO)
+
+- Recovery time objective (RTO)
+
+- Defense in depth
+    - Data
+    - Applications
+    - VM/compute
+    - Networking
+    - Perimeter
+    - Policies and access
+    - Physical security
+

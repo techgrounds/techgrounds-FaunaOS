@@ -22,8 +22,36 @@ Jij, als cloud engineer, moet met deze Well-Architected Framework een applicatie
 
 
 # Bestudeer:
+
 ## Well-Architected Framework van Azure
 - Om dit topic te bestuderen gaan we onszelf een paar vragen stellen en hopelijk door deze te beantwoorden leren we over well archtected framework van Azure
+
+
+![Achievement](../00_includes/AZ-12/ModuleAchivement.png)
+
+Defence layers  
+![Defence layers](<../00_includes/AZ-12/Indepth Defence.png>)
+
+### Protect from common attacks
+At each layer, there are some common attacks that you want to protect against. The following list isn't all-inclusive, but it can give you an idea of how each layer can be attacked and what types of protections you might need.
+
+**Data layer:** Exposing an encryption key or using weak encryption can leave your data vulnerable if unauthorized access occurs.
+
+**Application layer:** Malicious code injection and execution are the hallmarks of application-layer attacks. Common attacks include SQL injection and cross-site scripting (XSS).
+
+**VM/compute layer:** Malware is a common method of attacking an environment, which involves executing malicious code to compromise a system. After malware is present on a system, further attacks can occur that lead to credential exposure and lateral movement throughout the environment.
+
+**Networking layer:** Taking advantage of unnecessary open ports to the internet is a common method of attack. Open ports might also include leaving the SSH or RDP protocols open to virtual machines. When these protocols are open, they can allow brute-force attacks against your systems as attackers attempt to gain access.
+
+**Perimeter layer:** Denial-of-service (DoS) attacks often happen at this layer. These attacks try to overwhelm network resources, forcing them to go offline or making them incapable of responding to legitimate requests.
+
+**Policies and access layer:** This layer is where authentication occurs for your application. This layer might include modern authentication protocols such as OpenID Connect, OAuth, or Kerberos-based authentication such as Active Directory. The exposure of credentials is a risk at this layer, and it's important to limit the permissions of identities. You also want to have monitoring in place to look for possible compromised accounts, such as logins coming from unusual places.
+
+**Physical layer:** Unauthorized access to facilities through methods, such as door drafting and theft of security badges, can happen at this layer.
+
+Mangagers  
+![Alt text](../00_includes/AZ-12/IPSaaS.png)
+
 ## 1. Wat is Well architected framework?
 Het Azure Well-Architected Framework is een set richtlijnen die u kunt gebruiken om de kwaliteit van een workload te verbeteren.
 
