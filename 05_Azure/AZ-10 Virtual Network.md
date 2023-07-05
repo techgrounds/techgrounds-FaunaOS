@@ -1,12 +1,101 @@
-# [Onderwerp]
-[Geef een korte beschrijving van het onderwerp]
+# Azure Virtual Network (VNet)
+Azure virtual networks (VNets) zorgen ervoor dat resources als VMs, web apps en databases kunnen communiceren met elkaar, met gebruikers op het internet en met machines die on-premises staan.
+
 
 ## Key-terms
-[Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
+Vnet
+VPNs
+UDR
+
+## **Computational Thinking:**
+
+1. **Understand the Problem:**  
+   1. Identify the problem or task at hand.
+   Creating a Vnet and a webserver vm
+   2. Gather relevant information and requirements.  
+      - Point to site VPNs
+      - Site to site VPNs
+      - Azure Expressroute
+2. **Problem Decomposition:**  
+   3. Break down the problem into smaller, manageable components.
+- virtual network
+- vpn gateway
+- local network gateway
+   4. Identify the steps or subtasks needed to solve each component.
+Find good information (MSlearn + Youtube + Google + ChatGPT)
+3. **Pattern Recognition:**  
+   5. Analyze patterns or similarities in the data or problem.
+   6. Identify recurring structures or relationships.
+
+4. **Abstraction:**  
+   7. Identify the essential characteristics or properties relevant to the problem.
+   - Security pillar  
+   8. Remove unnecessary details and focus on the core concepts.
+   - Security --> creating data tunnels and or walls around your
+
+5. **Algorithmic Design:**  
+   9. Define the steps or subtasks required to solve the problem.  
+   10. Determine the order and dependencies of the steps.  
+   11. Plan for inputs and outputs.  
 
 ## Opdracht
+## Maak een Virtual Network met de volgende vereisten:
+Region: West Europe
+Name: Lab-VNet
+IP range: 10.0.0.0/16
+Vereisten voor subnet 1:
+Name: Subnet-1
+IP Range: 10.0.0.0/24
+Dit subnet mag geen route naar het internet hebben
+Vereisten voor subnet 2:
+Name: Subnet-2
+IP Range: 10.0.1.0/24
+
+- We gaan eerst beginnen met het aanmaken van een virtual network omdat dit de 2de keer is dat ik aan de opdracht begin weet ik dat we uiteindelijk om ons virtual network aan de VM in opdracht 2 te koppelen we een NAT gateway moeten gebruiken.
+
+- Hierdoor kunnen we ook via de Vnet die bij de VM komt onze subnets creeren.
+- Dit gaan we doen bij opdracht 2
+
+
+## Opdracht 2:
+Maak een VM met de volgende vereisten:
+Een apache server moet met de volgende custom data geïnstalleerd worden:
+
+~~~
+#!/bin/bash
+sudo su
+apt update
+apt install apache2 -y
+ufw allow 'Apache'
+systemctl enable apache2
+systemctl restart apache2
+~~~
+
+Er is geen SSH access nodig, wel HTTP  
+Subnet: Subnet-2  
+Public IP: Enabled  
+Controleer of je website bereikbaar is  
+
+Bij het aanmaken van de VM creeren we een nieuwe virtual network en dat geeft ons de optie om 2 subnets aan te maken.
+Create Virtual Network.
+![Create Virtual network](../00_includes/AZ-10/Createvirtualnetwork.png)
+
+Vervolgens selecteren we ons aangemaakte subnet -> Subnet-2
+![Alt text](../00_includes/AZ-10/Createsubnet.png)
+
+Nu moeten we nog de naam van onze Vnet aanpassen zoals aangegeven in opdracht 1
+We kunnen de naam niet aanpassen, we moeten een nieuw Vnet aanmaken zoals bij opdracht 1 dus dit gaan we doen.
+
+We gaan nu een NAT gateway aanmaken en daarbij direct een Vnet
+
+
+
+
 ### Gebruikte bronnen
-[Plaats hier de bronnen die je hebt gebruikt.]
+https://learn.microsoft.com/en-us/azure/vpn-gateway/tutorial-site-to-site-portal
+https://www.youtube.com/watch?v=CWy3x3Wux6o
+https://learn.microsoft.com/en-us/answers/questions/1121759/renaming-virtual-network
+https://www.youtube.com/watch?v=yghrkFzaYTU
 
 ### Ervaren problemen
 [Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
@@ -14,35 +103,3 @@
 ### Resultaat
 [Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
 
-
-
-OS Disk vs Data Disk:
-
-1. OS Disk:
-   - An OS disk is a special type of disk used to store the operating system of a virtual machine (VM).
-   - It is created automatically when you provision a VM and is typically attached as the boot disk.
-   - The OS disk contains the OS files, system binaries, and other necessary components for the VM to run.
-   - It is crucial for the VM's functionality and cannot be removed or detached from the VM.
-
-2. Data Disk:
-   - A data disk is a disk attached to a VM that is used for storing data, applications, and other files.
-   - Data disks can be added or removed from a VM as needed, providing flexibility in storage management.
-   - Multiple data disks can be attached to a VM, allowing for increased storage capacity and performance.
-   - Data disks can be formatted and partitioned based on specific requirements, and they are commonly used for databases, file storage, or any data-intensive workloads.
-
-Managed Disk vs Unmanaged Disk:
-
-1. Managed Disk:
-   - Managed disks are an Azure service that simplifies disk management for Azure VMs.
-   - With managed disks, Azure handles the storage provisioning, replication, and availability.
-   - Managed disks offer features like automatic storage scaling, snapshots, and disk encryption.
-   - They provide built-in high availability and resiliency, with data replicated across multiple storage clusters.
-   - Managed disks are the recommended option for most scenarios due to their ease of use and reliability.
-
-2. Unmanaged Disk:
-   - Unmanaged disks are the traditional method of managing disks in Azure VMs.
-   - With unmanaged disks, you are responsible for manually managing the underlying storage accounts.
-   - Unmanaged disks offer more control over the storage configuration, including the ability to choose storage account types and manually manage replication.
-   - However, they require additional manual steps for managing storage accounts and do not provide the same level of built-in resiliency and management features as managed disks.
-
-In summary, OS disks store the operating system of a VM, while data disks are used for storing data and applications. Managed disks simplify disk management, offering built-in resiliency and management features, while unmanaged disks provide more control but require additional manual management steps. Managed disks are the recommended choice for most scenarios, providing ease of use and reliable disk management for Azure VMs.
