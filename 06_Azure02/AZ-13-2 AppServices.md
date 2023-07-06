@@ -31,7 +31,7 @@ Onderwerpen die je onder de kop “Bestudeer” vindt verwachten wij dat je alle
 
 
 ### Gebruikte bronnen
-[Plaats hier de bronnen die je hebt gebruikt.]
+https://learn.microsoft.com/en-GB/training/modules/host-a-web-app-with-azure-app-service/
 
 ### Ervaren problemen
 [Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
