@@ -23,7 +23,9 @@ Go (Experimental)
 ## Study
 
 ### Waar is App Services voor?
+
 Azure App Service enables you to build and host web apps, mobile back ends, and RESTful APIs in the programming language of your choice without managing infrastructure. It offers auto-scaling and high availability, supports both Windows and Linux, and enables automated deployments from GitHub, Azure DevOps, or any Git repo. Learn how to use Azure App Service with our quickstarts, tutorials, and samples.
+
 ### Hoe past App Services / vervangt App Services in een on-premises setting?
 Je kan in combinatie met diensten zoals github je app online runnen om er zo voor te zorgen dat je de code waar de app op runt altijd beschikbaar heb.
 
@@ -32,6 +34,8 @@ Je kan in combinatie met diensten zoals github je app online runnen om er zo voo
 - Je hebt toegang tot contrainers en daarmee kan je op verschillende manieren je app deployen
 
 Het is moeilijker om schallbaarheid, beheer en flexibiliteit van de cloud na te bootsen in een on-premis setup.
+
+![Continious Deployment](<../00_includes/AZ-13/Continious Deployment.png>)
 
 ## Opdracht
 
@@ -73,6 +77,8 @@ Doormiddel van het combineren van de app services met andere diensten zoals gith
 
 ### Gebruikte bronnen
 https://learn.microsoft.com/en-GB/training/modules/host-a-web-app-with-azure-app-service/
+
+https://learn.microsoft.com/en-us/azure/app-service/deploy-best-practices
 
 ### Ervaren problemen
 [Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
