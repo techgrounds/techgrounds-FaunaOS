@@ -7,16 +7,16 @@ Onderwerpen die je onder de kop “Bestudeer” vindt verwachten wij dat je alle
 ---
 
 ## Key-terms
-Container
-Docker
-ASP.NET
-Node.js
-PHP
-Java
-Puthon
-Ruby
-WordPress
-Go (Experimental)
+- Container
+- Docker
+- ASP.NET
+- Node.js
+- PHP
+- Java
+- Puthon
+- Ruby
+- WordPress
+- Go (Experimental)
 
 ---
 
