@@ -81,16 +81,16 @@ Advantages of the cloud vs limitations of on-premises
 
 
 ### Gebruikte bronnen
-On-Prem AD vs. Hybrid Azure AD Join vs. Azure AD: Key Differences
+On-Prem AD vs. Hybrid Azure AD Join vs. Azure AD: Key Differences  
 https://www.spiceworks.com/tech/cloud/articles/legacy-ad-hybrid-ad-and-azure-ad-difference/
 
-Azure AD Overview MS Learn
+Azure AD Overview MS Learn  
 https://learn.microsoft.com/en-us/azure/active-directory-domain-services/overview
 
-Create and configure Azure AD
+Create and configure Azure AD  
 https://learn.microsoft.com/en-us/azure/active-directory-domain-services/tutorial-create-instance
 
-Steps to integrate your apps
+Steps to integrate your apps  
 https://learn.microsoft.com/en-us/azure/active-directory/fundamentals/five-steps-to-full-application-integration
 
 
