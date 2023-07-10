@@ -31,6 +31,7 @@ Microsoft vs self
 - Scalabillity
 Advantages of the cloud vs limitations of on-premises
 
+---
 ### Hoe kan ik X combineren met andere diensten?
 - Archetecture
 ![Local vs Cloud](../00_includes/AZ-13/azure-ad.png)
@@ -44,18 +45,25 @@ Advantages of the cloud vs limitations of on-premises
 
 **Azure AD Connect sync server.** An on-premises computer that runs the Azure AD Connect sync service. This service synchronizes information held in the on-premises Active Directory to Azure AD. For example, if you provision or deprovision groups and users on-premises, these changes propagate to Azure AD.
 
-- Applications
-**Registering the application**
+### Applications
 
-**Configuring authentication**
+**Registering the application**  
+    To use Azure AD with an application, you first need to register the application in Azure AD. This involves creating an application registration in your Azure AD tenant. During registration, you specify important details about the application, such as its name, redirect URLs (where users should be redirected after authentication), and the permissions it requires.
+
+**Configuring authentication**  
+    Once the application is registered, you need to configure how the application authenticates users. Azure AD supports various authentication protocols like OAuth 2.0 and OpenID Connect. You can choose the appropriate protocol based on your application's requirements. Azure AD provides configuration options to enable single sign-on (SSO) and specify the level of authentication required, such as username/password, multi-factor authentication, or federated authentication with external identity providers.
 
 **Authorization and permissions**
+    Azure AD allows you to define fine-grained access controls for applications using Azure AD's role-based access control (RBAC) capabilities. You can configure which users or groups have access to the application and specify the permissions they are granted. This ensures that users can only access the application features and data they are authorized to use.
 
-**Integrating application code**
+**Integrating application code**  
+    Once the application is registered and the authentication and authorization settings are configured, you need to integrate the Azure AD authentication code into your application. This typically involves using Azure AD SDKs, libraries, or APIs provided by Microsoft to handle the authentication process. The integration code handles the authentication flow, user token acquisition, and validation against Azure AD.
 
 **User authentication and access**
+    When users interact with the application, they are redirected to the Azure AD sign-in page for authentication. After successful authentication, Azure AD issues a token to the application, which can be used to validate the user's identity and authorization when accessing protected resources or performing actions within the application.
 
 **Secure application access**
+    Azure AD provides additional security features like conditional access policies, which can be used to enforce specific access controls based on various conditions such as user location, device compliance, or risk level. This helps ensure that application access remains secure and aligned with organizational policies.
 
 ### Wat is het verschil tussen X en andere gelijksoortige diensten?
 
@@ -75,8 +83,13 @@ Advantages of the cloud vs limitations of on-premises
 
 ### Hoe kan ik deze dienst koppelen aan andere resources?
 
+**Azure Active Directory:**
 
-
+| Step | Concept | Learning Resources | Assignment |
+|------|---------|--------------------|------------|
+| 1    | Introduction to Azure Active Directory (Azure AD) | Azure AD is a cloud-based identity and access management service that provides authentication and authorization for applications and resources in Azure. It enables single sign-on, multi-factor authentication, and more. | - Microsoft Learn: [Introduction to Azure Active Directory](https://docs.microsoft.com/en-us/learn/modules/intro-to-azure-ad/) | Set up Azure AD and create a user account. Explore different authentication methods, such as password-based, MFA, or Azure AD B2B guest user. |
+| 2    | Application and Service Principal Objects | Understand the concepts of application and service principal objects in Azure AD. They are used to authenticate and authorize applications and services to access resources in Azure. | - Microsoft Learn: [Use Azure Active Directory service principals & managed identities](https://learn.microsoft.com/en-us/azure/devops/integrate/get-started/authentication/service-principal-managed-identity?view=azure-devops) | Register an application in Azure AD and configure its permissions. Create a service principal and assign it appropriate roles and permissions. |
+| 3    | Azure AD Authentication and Authorization | Learn about different authentication and authorization methods in Azure AD, such as OAuth, OpenID Connect, and role-based access control (RBAC). Understand how to secure access to Azure resources using Azure AD. | - Microsoft Learn: [Secure Azure resources with Azure Active Directory](https://docs.microsoft.com/en-us/learn/modules/secure-azure-resources-with-azure-ad/) | Configure RBAC roles for Azure resources and assign them to users or groups in Azure AD. Implement Azure AD-based authentication for an application or API. |
 
 
 
