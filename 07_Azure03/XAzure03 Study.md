@@ -19,6 +19,7 @@ Azure Advisor focuses on providing recommendations for optimizing Azure resource
 
 ## Een handige lijst van taken die je praktisch moet kunnen:
 ### Waar kan ik deze dienst vinden in de console?
+![Containers](../00_includes/AZ-14/Containers.png)
 ### Hoe zet ik deze dienst aan?
 ### Hoe kan ik deze dienst koppelen aan andere resources?
 
@@ -37,6 +38,7 @@ Azure Support Plans are tailored for Azure and offer support for Azure-specific 
 
 ## Een handige lijst van taken die je praktisch moet kunnen:
 ### Waar kan ik deze dienst vinden in de console?
+![Supportplan](<../00_includes/AZ-14/Support Plan.png>)
 ### Hoe zet ik deze dienst aan?
 ### Hoe kan ik deze dienst koppelen aan andere resources?
 
@@ -55,6 +57,7 @@ Azure Advisor focuses on providing recommendations for optimizing Azure resource
 
 ## Een handige lijst van taken die je praktisch moet kunnen:
 ### Waar kan ik deze dienst vinden in de console?
+![Advisor](../00_includes/AZ-14/advisor.png)
 ### Hoe zet ik deze dienst aan?
 ### Hoe kan ik deze dienst koppelen aan andere resources?
 
@@ -73,6 +76,7 @@ Azure App Configuration specifically focuses on managing application configurati
 
 ## Een handige lijst van taken die je praktisch moet kunnen:
 ### Waar kan ik deze dienst vinden in de console?
+![Appconfig](../00_includes/AZ-14/Appconfig.png)
 ### Hoe zet ik deze dienst aan?
 ### Hoe kan ik deze dienst koppelen aan andere resources?
 
@@ -91,5 +95,6 @@ Azure Activity Log is specific to capturing and analyzing activities within Azur
 
 ## Een handige lijst van taken die je praktisch moet kunnen:
 ### Waar kan ik deze dienst vinden in de console?
+![Activitylog](../00_includes/AZ-14/Activitylog.png)
 ### Hoe zet ik deze dienst aan?
 ### Hoe kan ik deze dienst koppelen aan andere resources?

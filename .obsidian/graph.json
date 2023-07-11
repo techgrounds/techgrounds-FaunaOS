@@ -1,0 +1,51 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "Linux",
+      "color": {
+        "a": 1,
+        "rgb": 14701138
+      }
+    },
+    {
+      "query": "Network",
+      "color": {
+        "a": 1,
+        "rgb": 14725458
+      }
+    },
+    {
+      "query": "Security",
+      "color": {
+        "a": 1,
+        "rgb": 5431485
+      }
+    },
+    {
+      "query": "",
+      "color": {
+        "a": 1,
+        "rgb": 5431378
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1.427880859375,
+  "lineSizeMultiplier": 1.002001953125,
+  "collapse-forces": false,
+  "centerStrength": 0.548909505208333,
+  "repelStrength": 10.1236979166667,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.6423430687510089,
+  "close": true
+}

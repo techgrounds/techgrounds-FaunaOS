@@ -29,9 +29,9 @@ Omdat het onderdeel is van
 
 ---
 
-## Een handige lijst van taken die je praktisch moet kunnen:
+
 ### Waar kan ik deze dienst vinden in de console?
-![Hier](<../00_includes/AZ-13/Azure monitor location.png>)
+![Monitor](../00_includes/AZ-14/Monitor.png)
 ### Hoe zet ik deze dienst aan?
 Deels gaat dit automatisch bij het aanmaken van rescources kan je ook andere tools linken 
 ### Hoe kan ik deze dienst koppelen aan andere resources?

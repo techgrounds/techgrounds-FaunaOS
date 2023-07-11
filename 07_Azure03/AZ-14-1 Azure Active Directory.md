@@ -72,6 +72,8 @@ Advantages of the cloud vs limitations of on-premises
 ## Opdracht
 
 ### Waar kan ik deze dienst vinden in de console?
+![AD](../00_includes/AZ-14/AD.png)
+
 
 ### Hoe zet ik deze dienst aan?
 1. Sign in to the Azure portal

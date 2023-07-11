@@ -1,0 +1,186 @@
+{
+  "main": {
+    "id": "4761428d7c502f79",
+    "type": "split",
+    "children": [
+      {
+        "id": "dfe4620e02a7cbc2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8392ce77d3a9eb36",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "01_Linux_1/[LNX-01] Setting Up.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2e691e254b272376",
+    "type": "split",
+    "children": [
+      {
+        "id": "12a3c922a475c27b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a0791fddecb4f66d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "f7c23d31e9440c2c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "ssh",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "58d38b64610ea641",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "bd4a0ed18e7b7c53",
+    "type": "split",
+    "children": [
+      {
+        "id": "816da313f4d2c0fe",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4252ade647b2d1da",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "01_Linux_1/[LNX-01] Setting Up.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "fd11ef3ff382e008",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "01_Linux_1/[LNX-01] Setting Up.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "59f392387d06a1a0",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "7b3d9ae5c77e4bd1",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "01_Linux_1/[LNX-01] Setting Up.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "8392ce77d3a9eb36",
+  "lastOpenFiles": [
+    "00_includes/AZ-14/Activitylog.png",
+    "00_includes/AZ-14/Appconfig.png",
+    "00_includes/AZ-14/advisor.png",
+    "00_includes/AZ-14/Support Plan.png",
+    "00_includes/AZ-14/Functions.png",
+    "00_includes/AZ-14/Containers.png",
+    "00_includes/AZ-14/Databases.png",
+    "00_includes/AZ-14/Monitor.png",
+    "00_includes/AZ-14/AD.png",
+    "00_includes/AZ-14",
+    "Untitled.canvas",
+    "01_Linux_1/[LNX-07] Bash scripting.md",
+    "07_Azure03/AZ-14-4 Azure Functions.md",
+    "01_Linux_1/[LNX-03] Working with text (CLI).md",
+    "01_Linux_1/[LNX-02] Files and directories.md",
+    "01_Linux_1/[LNX-01] Setting Up.md",
+    "01_Linux_1/[GIT-01] Opdracht 1.md",
+    "01_Linux_1/[LNX-08] Cron script.md",
+    "01_Linux_1/[LNX-06] Processes.md",
+    "01_Linux_1/[LNX-05] File Permissions.md",
+    "01_Linux_1/[LNX-04] Users and groups.md",
+    "2023-07-11.md",
+    "Untitled 1.canvas",
+    "Untitled 2.canvas",
+    "07_Azure03/AZ-14 Week 6 Overview.md",
+    "03_Networking_/NTW-04.md",
+    "07_Azure03/AZ-14-2 Azure Monitor.md",
+    "07_Azure03/AZ-14-1 Azure Active Directory.md",
+    "07_Azure03/AZ-14-5 Event Grid, Queue Storage, Service Bus.md",
+    "07_Azure03/XAzure03 Study.md",
+    "04_Security/SEC-04 Symmetric encryption.md",
+    "README.md",
+    "00_Retros/[RET-01]Week_03_Date_23_06_23.md"
+  ]
+}

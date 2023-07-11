@@ -22,6 +22,7 @@ Onderwerpen die je onder de kop “Bestudeer” vindt verwachten wij dat je alle
 
 ## Een handige lijst van taken die je praktisch moet kunnen:
 ### Waar kan ik deze dienst vinden in de console?
+
 ### Hoe zet ik deze dienst aan?
 ### Hoe kan ik deze dienst koppelen aan andere resources?
 
