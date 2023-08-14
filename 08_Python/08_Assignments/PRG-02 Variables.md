@@ -41,7 +41,7 @@ Print the text “Value 2: <value 2 here>”.
 Change the value of that same variable.
 Print the text “Value 3: <value 3 here>”.
 Example output:
-
+![Ex3](../08_Screenshots/Exampleoutput3.png)
 
 
 

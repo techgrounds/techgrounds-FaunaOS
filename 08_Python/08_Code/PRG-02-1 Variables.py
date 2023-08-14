@@ -1,5 +1,5 @@
 #Create a new script.
-
+# ✅
 #Create two variables x and y. Assign a numerical value to both variables.
 x = 10
 y = 13 
