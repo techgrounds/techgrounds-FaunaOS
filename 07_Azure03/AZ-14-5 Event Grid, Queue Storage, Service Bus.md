@@ -12,8 +12,10 @@ Onderwerpen die je onder de kop “Bestudeer” vindt verwachten wij dat je alle
 ---
 
 ## Study
-[]
+Event Grid
+
 ### Waar is X voor?
+Azure Event Grid Allows for uniform event consumption using a publish subscribe model allowing react to relevant events across both azure and non-azure services in near-real time fashion
 ### Hoe past X / vervangt X in een on-premises setting?
 ### Hoe kan ik X combineren met andere diensten?
 ### Wat is het verschil tussen X en andere gelijksoortige diensten?

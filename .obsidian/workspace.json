@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01_Linux_1/[LNX-01] Setting Up.md",
+                "file": "2023-07-18.md",
                 "mode": "source",
                 "source": false
               }
@@ -65,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "01_Linux_1/[LNX-01] Setting Up.md",
+                "file": "2023-07-18.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "01_Linux_1/[LNX-01] Setting Up.md",
+                "file": "2023-07-18.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "01_Linux_1/[LNX-01] Setting Up.md"
+                "file": "2023-07-18.md"
               }
             }
           }
@@ -149,6 +148,15 @@
   },
   "active": "8392ce77d3a9eb36",
   "lastOpenFiles": [
+    "07_Azure03/AZ-14-5 Event Grid, Queue Storage, Service Bus.md",
+    "2023-07-18.md",
+    "07_Azure03/AZ-14-4 Azure Functions.md",
+    "07_Azure03/AZ-14-3 CosmosDB.md",
+    "07_Azure03/AZ-14-2 Azure Monitor.md",
+    "07_Azure03/AZ-14-1 Azure Active Directory.md",
+    "07_Azure03/AZ-14 Week 6 Overview.md",
+    "07_Azure03/AZ-14 MS Training.md",
+    "01_Linux_1/[LNX-01] Setting Up.md",
     "00_includes/AZ-14/Activitylog.png",
     "00_includes/AZ-14/Appconfig.png",
     "00_includes/AZ-14/advisor.png",
@@ -161,10 +169,8 @@
     "00_includes/AZ-14",
     "Untitled.canvas",
     "01_Linux_1/[LNX-07] Bash scripting.md",
-    "07_Azure03/AZ-14-4 Azure Functions.md",
     "01_Linux_1/[LNX-03] Working with text (CLI).md",
     "01_Linux_1/[LNX-02] Files and directories.md",
-    "01_Linux_1/[LNX-01] Setting Up.md",
     "01_Linux_1/[GIT-01] Opdracht 1.md",
     "01_Linux_1/[LNX-08] Cron script.md",
     "01_Linux_1/[LNX-06] Processes.md",
@@ -173,11 +179,7 @@
     "2023-07-11.md",
     "Untitled 1.canvas",
     "Untitled 2.canvas",
-    "07_Azure03/AZ-14 Week 6 Overview.md",
     "03_Networking_/NTW-04.md",
-    "07_Azure03/AZ-14-2 Azure Monitor.md",
-    "07_Azure03/AZ-14-1 Azure Active Directory.md",
-    "07_Azure03/AZ-14-5 Event Grid, Queue Storage, Service Bus.md",
     "07_Azure03/XAzure03 Study.md",
     "04_Security/SEC-04 Symmetric encryption.md",
     "README.md",
