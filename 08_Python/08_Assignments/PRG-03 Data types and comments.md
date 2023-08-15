@@ -35,8 +35,11 @@ c = False
 d = "18.5"
 ~~~
 * Determine the data types of all four variables (*a, b, c, d*) using a built in function.
+![classes](../08_Screenshots/classes.png)
 * Make a new variable *x* and give it the value *b + d*. Print the value of *x*. This will raise an error. Fix it so that *print(x)* prints a float.
+![Alt text](../08_Screenshots/float.png)
 * Write a comment above every line of code that tells the reader what is going on in your script.
+Done see .py file
 
 # Exercise 2:
 * Create a new script.
