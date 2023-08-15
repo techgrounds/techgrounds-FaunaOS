@@ -44,11 +44,16 @@ Done see .py file
 # Exercise 2:
 * Create a new script.
 * Use the *input()* function to get input from the user. Store that input in a variable.
+![inputisage](../08_Screenshots/input.png)
 * Find out what data type the output of *input()* is. See if it is different for different kinds of input (numbers, words, etc.).
-
+![inputtype](../08_Screenshots/inputtype.png)
 
 ### Gebruikte bronnen
-[Plaats hier de bronnen die je hebt gebruikt.]
+## Exercise 1:
+https://www.codecademy.com/resources/docs/python/data-types
+
+## Exercise 2:
+https://www.codecademy.com/resources/docs/python/built-in-functions/input
 
 ### Ervaren problemen
 [Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
