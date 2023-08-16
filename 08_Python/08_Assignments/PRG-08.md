@@ -6,7 +6,11 @@
 
 ## Opdracht
 ### Gebruikte bronnen
-[Plaats hier de bronnen die je hebt gebruikt.]
+Dictoinarys
+https://www.codecademy.com/resources/docs/python/dictionaries
+
+Write file
+https://www.codecademy.com/resources/docs/python/files
 
 ### Ervaren problemen
 [Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
