@@ -1,15 +1,9 @@
+@description('Specifies the location for resources.')
 param location string = 'westeurope'
-
-module main 'main.bicep' = {
-  name: 'main'
-  params: {
-    location: westeurope
-  }
-}
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   name: 'faunabiceplaunchstorage'
-  location: 'westeurope'
+  location: location
 sku: {
   name: 'Standard_LRS'
 }
@@ -21,7 +15,7 @@ properties: {
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: 'faunabicepappstarterplan'
-  location: 'westeurope'
+  location: location
   sku: {
     name: 'F1'
   }
@@ -29,7 +23,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = {
 
 resource appServiceApp 'Microsoft.Web/sites@2022-09-01' = {
   name: 'faunabicepapplaunch'
-  location: 'westeurope'
+  location: location
   properties: {
     serverFarmId: appServicePlan.id
     httpsOnly: true
