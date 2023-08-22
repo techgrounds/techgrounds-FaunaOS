@@ -1,0 +1,67 @@
+# Log Date [22-08-23]
+
+
+# Day Start
+
+#### Summary
+- **Objective:** [Briefly state the objective of the day's work]
+- **Focus Areas:** [List the main areas or tasks you're working on]
+
+#### Yesterday's Improvement's
+- **Repeat** [What went well and should be repeated today]
+- **Avoid** [What didn't go well and should be avoided today]
+
+#### Today's Planned Action Items
+
+- [ ] Task 1: [Description of the task]
+- [ ] Task 2: [Description of the task]
+- [ ] ...
+
+
+---
+
+### Decisions Made
+
+#### Decision X: [Decision Title]
+- **Description:** [Explain the decision in detail]
+- **Rationale:** [Provide the reasoning behind the decision]
+- **Impact:** [Describe the potential impact on the project]
+
+...
+
+### Challenges Faced
+
+#### Challenge X: [Challenge Title]
+  - **Description:** [Explain the challenge]
+  - **Potential Solutions:** [List potential solutions]
+
+
+...
+
+### Solutions Implemented
+
+#### Challenge X: [Challenge Title]**
+  - **Solution:** [Explain the solution that was implemented]
+  - **Results:** [Describe the outcome of the solution]
+
+
+...
+
+---
+# End of Day
+
+#### Today's Completed Action Items
+
+- [ ] Task 1: [Description of the task]
+- [ ] Task 2: [Description of the task]
+- [ ] ...
+
+### Reflection
+- **Progress Made:** [Summarize what you accomplished today]
+- **Lessons Learned:** [Highlight any insights or lessons you gained]
+- **Plan for Tomorrow:** [Briefly outline your plan for the next day]
+
+
+### Improvements for tomorrow
+- **Repeat** [What went well and should be repeated tomorrow]
+- **Avoid** [What didn't go well and should be avoided tomorrow]
