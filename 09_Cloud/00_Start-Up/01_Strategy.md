@@ -1,12 +1,16 @@
-### Questions for determining the project strategy
---
-# Main Project Goal: Cloud Transition  
+# Strategy
+# Questions for determining the project strategy
 
+# Briefing Extractions
+
+## Extractions:
+# Main Project Goal: Cloud Transition  
 ## Product/Service: Application
 
-### Criteria: 
+## Criteria: 
 - IaC (Infrastructure as code)
 - Azure(Bicep)
+
 
 - De webserver moet dagelijks gebackupt worden. De backups moeten 7 dagen behouden worden.  
 - De webserver moet op een geautomatiseerde manier geïnstalleerd worden.
@@ -16,7 +20,7 @@
   - Alle subnets moeten beschermd worden door een firewall op subnet niveau.
   - SSH of RDP verbindingen met de webserver mogen alleen tot stand komen vanuit de admin server.
 
---
+
 # Start-up Questions.
 
 1. ## **Scope and Goals:**
@@ -40,6 +44,10 @@
 -   
 ~~~
 
+The background is , IaC
+It’s open because its purpose is learning.
+
+Reduce the capital cost of having the resources
 
 2. ## **Azure Environment Configuration and Optimisation.**
 
@@ -61,10 +69,18 @@
 
 -> Wat is de locatie van de resources en is de prijs belangrijk.
 
+Limitation with azure so we are free to pick our own region.
+West europe
+Second Nearest
+
 **Solution Details:**
 ~~~
 - !: Servers staan in de bijlage in verschillende availabilities zones.  
 ~~~
+In the diagram it’s in 2 availability zones: you make other decisions.
+BL1 kan alleen in availability zone 2
+
+-> If something is missing in the diagram -> cloud it be used in the next version.
 
 
 3. ## **Architecture and Design:**
@@ -88,14 +104,20 @@
 → Is dit one-time
 
 → of is dit bij iedere deployment van de VMs
+With every deployments
 
 → moeten de server windows of linux zijn en specs?
+Both SSH and RDP; RDP is Windows, SSH is Linux
+
 
 **Solution Details:**
 ~~~
-- 
+- RDP is Windows
 ~~~
 
+~~~
+- SSH is Linux
+~~~
 
 4. ## **Data Migration:**
 
@@ -113,12 +135,23 @@
 **Team Questions:**  
 
 -> Wat voor type storage account → blob of een van de andere.
+User Data
+Scripts (Post deployments , bootstrap scripts)
 
 -> Is opslag critical of non-critical; dus in hoeverre is data replicatie een vereiste?
+Data replication was thought off due to redundancy for the scripts.
+By using resource locks
+
+Possible improvement:
+They are only worried about the backup
+
 
 -> Hoe vaak wordt de data in de opslag gebruikt? Frequent of niet frequent. (ivm hot of cool tier)
+User Data -> Hot tier
+Basic type with lowest cost
 
 -> Moet de opslag publiekelijk bereikbaar zijn vanaf het internet, of is deze puur voor intern gebruik?
+The script will be encrypted so its not open for everyone
 
 **Solution Details:**
 ~~~
@@ -132,7 +165,7 @@
 ~~~
 - De admin/management server moet bereikbaar zijn met een publiek IP.
 ~~~
-
+We need to define the public IP
 ~~~
 - De volgende IP ranges worden gebruikt: 10.10.10.0/24 & 10.20.20.0/24
 ~~~
@@ -147,12 +180,18 @@
 → DNS
 
 → Basic SKUs dynamic of static ip adress ?
+Static IP adress
+
+If you can make dynamic work from static location.
 
 → Krijgen we een lijst met vertrouwde locaties, of moeten we alleen rekening met onszelf houden
+It will be our locations so those of our house
 
 -> zijn er meerdere storage accounts nodig?
+There is no need for this 
 
 -> Apart Vnet of moet dit gezamenlijk? er moeten 2 subnets gebruikt worden dus we verwachten dat de op verschillende moeten komen. Er staan 2 subnet IP ranges.
+Yes
 
 **Solution Details:**
 ~~~
@@ -185,18 +224,26 @@
 - What compliance requirements must be met, and how will they be addressed in the cloud?
 
 **Team Questions:**  
-
+-
 → Wat voor type encryptie
+Basic type of encryption -> can be changed later
 
 → Wat zijn de specificaties van de VM’s zoals vCPU, RAM, disk grootte?
+We don’t have heavy traffic so just pick what gives most connectivity.
+Have the minimal possible
 
 → gaat dit om onze eigen vertrouwde locations of krijgen we een lijst.
+Our own locations
 
 → word er on premiss ingelogd of via een verbinding buitenaf?
+- No on premise
 
 → defineer beschermed welke criteria moet het aan voldoen.
+- Firewall protection, Rule based
 
 → Admin server moeten we die zelf opzetten en is dat dan linux of windows?
+
+You or the client controls the admin server
 
 **Solution Details:**
 ~~~
@@ -241,6 +288,7 @@
 **Team Questions:**  
 
 -> Moet er monitoring of alerting ingesteld worden? zo ja, welke metrics moeten worden gemonitord?
+Voor ons zelf kan dat wel 
 
 **Solution Details:**
 ~~~
@@ -264,14 +312,23 @@
 **Team Questions:**  
 
 → Moeten dit snapshots zijn via de Azure back-up policy, of via het OS?
+It is the azure backup service.
+-> Bash scripting define on this and that time.
+-> Use azure serveses
 
 → is het 7 backups en dan de eerste deleten.
+Linux assignment, bash script. Everyday your server should be backed up.
+That means 7 back ups.
 
 → Moet er een wekelijkse backup komen?
+No
 
 →  Specifieke tijden?
+No we can pick ourselves
 
 → Waar moeten we een backup van maken, alleen de VM van de webserver of ook de database?
+Both Webserver and the vm.
+Storage acc and databases
 
 **Solution Details:**
 ~~~
@@ -293,6 +350,10 @@
 **Team Questions:**  
 
 -> Wat zijn de budgetten voor tijdens het gebruik van de omgeving?
+When we are presenting -> we need to explain the costs.
+We need to know and explain why we made the decisions that result in certain cost
+
+Max 50 euro
 
 **Solution Details:**
 ~~~
@@ -427,6 +488,7 @@
 **Team Questions:**  
 
 -> Volledige overgang naar cloud of hybride model?
+Full cloud
 
 **Solution Details:**
 ~~~
@@ -492,6 +554,7 @@
 **Team Questions:**  
 
 -> Wat is het budget Post-Migration voor het draaien van de cloud environment?
+Presentation
 
 **Solution Details:**
 ~~~
