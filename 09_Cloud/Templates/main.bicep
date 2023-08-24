@@ -1,11 +1,24 @@
 @description('Specifies the location for resources.')
 param location string = 'westeurope'
+param storageAccountName string = 'fauna${uniqueString(resourceGroup().id)}'
+param appServiceAppName string = 'fauna${uniqueString(resourceGroup().id)}'
+
+@allowed([
+  'nonprod'
+  'prod'
+])
+param environmentType string
+
+var appServicePlanName = 'faunabicepappplan'
+var storageAccountSkuName = (environmentType == 'prod') ? 'Standard_GRS' : 'Standard_LRS'
+var appServicePlanSkuName = (environmentType == 'prod') ? 'P2V3' : 'F1'
+
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
-  name: 'faunabiceplaunchstorage'
+  name: storageAccountName
   location: location
 sku: {
-  name: 'Standard_LRS'
+  name: storageAccountSkuName
 }
 kind: 'StorageV2'
 properties: {
@@ -14,15 +27,15 @@ properties: {
 }
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = {
-  name: 'faunabicepappstarterplan'
+  name: appServicePlanName
   location: location
   sku: {
-    name: 'F1'
+    name: appServicePlanSkuName
   }
 }
 
 resource appServiceApp 'Microsoft.Web/sites@2022-09-01' = {
-  name: 'faunabicepapplaunch'
+  name: appServiceAppName
   location: location
   properties: {
     serverFarmId: appServicePlan.id
