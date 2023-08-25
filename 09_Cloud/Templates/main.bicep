@@ -2,6 +2,7 @@
 param location string = 'westeurope'
 param storageAccountName string = 'fauna${uniqueString(resourceGroup().id)}'
 param appServiceAppName string = 'fauna${uniqueString(resourceGroup().id)}'
+param appServicePlanName string =  'fauna${uniqueString(resourceGroup().id)}'
 
 @allowed([
   'nonprod'
@@ -9,7 +10,6 @@ param appServiceAppName string = 'fauna${uniqueString(resourceGroup().id)}'
 ])
 param environmentType string
 
-var appServicePlanName = 'faunabicepappplan'
 var storageAccountSkuName = (environmentType == 'prod') ? 'Standard_GRS' : 'Standard_LRS'
 var appServicePlanSkuName = (environmentType == 'prod') ? 'P2V3' : 'F1'
 
@@ -42,3 +42,5 @@ resource appServiceApp 'Microsoft.Web/sites@2022-09-01' = {
     httpsOnly: true
   }
 }
+
+output appServiceAppName string = appServiceAppName
