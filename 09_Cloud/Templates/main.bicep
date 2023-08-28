@@ -8,13 +8,16 @@ param appServicePlanName string =  'fauna${uniqueString(resourceGroup().id)}'
   'nonprod'
   'prod'
 ])
+
+
 param environmentType string
+param action string = 'create'
 
 var storageAccountSkuName = (environmentType == 'prod') ? 'Standard_GRS' : 'Standard_LRS'
 var appServicePlanSkuName = (environmentType == 'prod') ? 'P2V3' : 'F1'
 
 
-resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = if (action == 'create') {
   name: storageAccountName
   location: location
 sku: {
@@ -26,7 +29,7 @@ properties: {
   }
 }
 
-resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = {
+resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = if (action == 'create') {
   name: appServicePlanName
   location: location
   sku: {
@@ -34,7 +37,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = {
   }
 }
 
-resource appServiceApp 'Microsoft.Web/sites@2022-09-01' = {
+resource appServiceApp 'Microsoft.Web/sites@2022-09-01' = if (action == 'create') {
   name: appServiceAppName
   location: location
   properties: {
@@ -43,4 +46,21 @@ resource appServiceApp 'Microsoft.Web/sites@2022-09-01' = {
   }
 }
 
-output appServiceAppName string = appServiceAppName
+module appService 'modules/appService.bicep' = if (action == 'create') {
+  name: 'appService'
+  params: {
+    location: location
+    appServiceAppName: appServiceAppName
+    environmentType: environmentType
+  }
+} 
+
+module deleteModule 'modules/deleteModule.bicep' =  if (action == 'delete') {
+  name: 'deleteResourcesModule' 
+  params: {
+
+  }
+}
+
+
+output appServiceAppHostName string = appService.outputs.appServiceAppHostName
