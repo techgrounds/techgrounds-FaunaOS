@@ -59,9 +59,9 @@ resource resourceGroup 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 
 
 
-module VNET 'modules/virtualNetwork/virtualNetwork.bicep' = {
+module virtualNetwork 'modules/virtualNetwork/virtualNetwork.bicep' = {
   scope: resourceGroup
-  name: 'vnet-${product}${component}-${env}-${locationShortName}'
+  name: 'vnet-${product}${component}-${env}-${locationShortName}-dp'
   params: {
     addressPrefixes: addressPrefixes
     env: env

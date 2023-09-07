@@ -27,7 +27,7 @@ param dnsServers array
 
 
 var vnetName =  'vnet-${groupName}-${env}-${locationShortName}'
-var dnsServers_var = {
+var dnsServersvariable = {
   dnsServers: array(dnsServers)
 }
 
@@ -40,16 +40,12 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2023-04-01' = {
       addressPrefixes: addressPrefixes
     }
     // Here if the value is empty if we dont set a value the result is null
-    dhcpOptions: !empty(dnsServers) ? dnsServers_var : null
+    dhcpOptions: !empty(dnsServers) ? dnsServersvariable : null
     // This is a loop for deploying subnets 
     subnets: [for subnet in subnets: {
       name: 'snet-${subnet.name}-${env}-${locationShortName}'
       properties: {
         addressPrefix: subnet.subnetPrefix
-        serviceEndpoints: contains(subnet, 'serviceEndpoints') ? subnet.serviceEndpoints: []
-        delegations: contains(subnet, 'delegation') ? subnet.privateEndpointNetwork: []
-        privateEndpointNetworkPolicies: contains(subnet, 'privateEndpointNetworkPolicies') ? subnet.privateEndpointNetworkPolicies: []
-        privateLinkServiceNetworkPolicies: contains(subnet, 'privateLinkServiceNetworkPolicies') ? subnet.privateLinkServiceNetworkPolicies: []
       }
     }]
   }
