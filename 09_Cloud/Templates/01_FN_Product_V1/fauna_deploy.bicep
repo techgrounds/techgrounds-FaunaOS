@@ -1,7 +1,9 @@
 targetScope = 'subscription'
 
-// -----------------------------------------------
+// --------------------------------------------------
 // Parameter declaration
+// --------------------------------------------------
+
 @description('Application components these resources are part of.')
 param component string
 
@@ -30,8 +32,10 @@ param locationList object
 param dnsServers array
 
 
-// ----------------------------------------------
+// --------------------------------------------------
 // Variable declaration
+// --------------------------------------------------
+
 var groupName = '${product}-${component}'
 var enviromentName = '${groupName}-${env}-${locationShortName}'
 var resourceGroupName = 'rg-${enviromentName}'
@@ -43,8 +47,9 @@ var tagValues = {
   product: product
 }
 
-// ----------------------------------------------
+// // ------------------------------------------------
 // Resource declaration
+// ---------------------------------------------------
 
 resource resourceGroup 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   name: resourceGroupName
@@ -53,7 +58,8 @@ resource resourceGroup 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 }
 
 
-module VNET 'modules/virtualNetwork.bicep' = {
+
+module VNET 'modules/virtualNetwork/virtualNetwork.bicep' = {
   scope: resourceGroup
   name: 'vnet-${product}${component}-${env}-${locationShortName}'
   params: {
