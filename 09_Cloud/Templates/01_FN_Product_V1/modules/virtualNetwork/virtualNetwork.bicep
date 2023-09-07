@@ -27,9 +27,27 @@ param dnsServers array
 
 
 var vnetName =  'vnet-${groupName}-${env}-${locationShortName}'
+var nsgSecurityRules = json(loadTextContent('../../parameters/nsg_rules.json')).securityRules
+var nsgName = 'nsg-${groupName}-${env}-${locationShortName}'
 var dnsServersvariable = {
   dnsServers: array(dnsServers)
 }
+
+
+resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2023-04-01' = {
+  name: nsgName
+  location: location
+  tags: tagValues
+  properties: {
+    securityRules: nsgSecurityRules
+   
+
+  }
+}
+
+@description('The resource ID of the network security group.')
+output resourceId string = networkSecurityGroup.id
+
 
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2023-04-01' = {
   name: vnetName
@@ -46,10 +64,19 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2023-04-01' = {
       name: 'snet-${subnet.name}-${env}-${locationShortName}'
       properties: {
         addressPrefix: subnet.subnetPrefix
-      }
-    }]
+        networkSecurityGroup: {
+          id: networkSecurityGroup.id
+        }
+        
+        }
+  
+     }
+    ]
   }
 }
 
+
+
 // Notes
 // 
+

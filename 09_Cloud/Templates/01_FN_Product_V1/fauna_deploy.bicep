@@ -58,7 +58,6 @@ resource resourceGroup 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 }
 
 
-
 module virtualNetwork 'modules/virtualNetwork/virtualNetwork.bicep' = {
   scope: resourceGroup
   name: 'vnet-${product}${component}-${env}-${locationShortName}-dp'
@@ -73,3 +72,4 @@ module virtualNetwork 'modules/virtualNetwork/virtualNetwork.bicep' = {
     subnets: subnets
   }
 }
+

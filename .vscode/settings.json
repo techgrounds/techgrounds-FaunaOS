@@ -48,5 +48,11 @@
     "python.testing.pytestArgs": [
         "."
     ],
-    "terminal.integrated.cwd": ""
+    "terminal.integrated.cwd": "",
+    "cSpell.words": [
+        "euwest",
+        "germanywestcentral",
+        "gerwc",
+        "westeurope"
+    ]
 }
