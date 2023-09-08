@@ -1,5 +1,6 @@
-// --------
+// // ---------------------
 // Parameter declaration
+// ---------------------
 
 @description('Enviroment for deployment')
 param env string
@@ -74,6 +75,8 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2023-04-01' = {
     }]
   }
 }
+
+// // ------------
 // Notes
-// 
+// ---------------
 

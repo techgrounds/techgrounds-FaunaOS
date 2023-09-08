@@ -34,7 +34,7 @@ param dnsServers array
 @description('Defines what subnet will have a nsg attached to them')
 param allowedSubNsg string
 
-// --------------------------------------------------
+// // --------------------------------------------------
 // Variable declaration
 // --------------------------------------------------
 
