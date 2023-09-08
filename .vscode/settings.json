@@ -54,5 +54,8 @@
         "germanywestcentral",
         "gerwc",
         "westeurope"
+    ],
+    "cSpell.ignoreWords": [
+        "allowednsg"
     ]
 }

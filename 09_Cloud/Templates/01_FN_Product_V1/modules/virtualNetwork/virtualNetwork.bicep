@@ -25,6 +25,9 @@ param locationShortName string
 @description('Custom DNS servers for Virtual Network')
 param dnsServers array
 
+param allowedSubNsg string
+
+
 
 var vnetName =  'vnet-${groupName}-${env}-${locationShortName}'
 var nsgSecurityRules = json(loadTextContent('../../parameters/nsg_rules.json')).securityRules
@@ -40,11 +43,10 @@ resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2023-04-0
   tags: tagValues
   properties: {
     securityRules: nsgSecurityRules
-   
-
   }
 }
 
+// NSG ---> Output
 @description('The resource ID of the network security group.')
 output resourceId string = networkSecurityGroup.id
 
@@ -64,19 +66,14 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2023-04-01' = {
       name: 'snet-${subnet.name}-${env}-${locationShortName}'
       properties: {
         addressPrefix: subnet.subnetPrefix
-        networkSecurityGroup: {
+        // Defines what subnet gets a nsg but using the output of the NSG resource-ID
+        networkSecurityGroup: subnet.name == '${allowedSubNsg}' ? {
           id: networkSecurityGroup.id
-        }
-        
-        }
-  
-     }
-    ]
+        } : null
+      }
+    }]
   }
 }
-
-
-
 // Notes
 // 
 

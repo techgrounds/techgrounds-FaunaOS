@@ -36,9 +36,13 @@
         },
         {
           "name":"future",
-          "subnetPrefix": "10.10.10.128/25"
+          "subnetPrefix": "10.10.10.128/25"                   
         }
       ]
+      },
+      "allowedSubNsg": {
+        "value": "frontend"
       }
     }
-  }
+    }
+  

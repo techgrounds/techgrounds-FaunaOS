@@ -31,6 +31,8 @@ param locationList object
 @description('Custom DNS servers for Virtual Network')
 param dnsServers array
 
+@description('Defines what subnet will have a nsg attached to them')
+param allowedSubNsg string
 
 // --------------------------------------------------
 // Variable declaration
@@ -46,6 +48,8 @@ var tagValues = {
   deploymentDate: currentDate
   product: product
 }
+
+
 
 // // ------------------------------------------------
 // Resource declaration
@@ -70,6 +74,10 @@ module virtualNetwork 'modules/virtualNetwork/virtualNetwork.bicep' = {
     dnsServers: dnsServers
     groupName: groupName
     subnets: subnets
-  }
-}
+    allowedSubNsg: allowedSubNsg
+        }
+      }
+
+
+    
 
