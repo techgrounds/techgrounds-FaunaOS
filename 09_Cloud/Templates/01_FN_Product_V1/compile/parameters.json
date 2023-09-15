@@ -1,0 +1,121 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "germanywestcentral"
+        },
+        "networkInterfaceName2": {
+            "value": "vm-fauna-test224_z2"
+        },
+        "subnetName": {
+            "value": "snet-frontend-Dev-gerwc"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/e40723d1-0cc4-47a0-8f11-6246f8d97d70/resourceGroups/rg-V1-Fauna-Dev-gerwc/providers/Microsoft.Network/virtualNetworks/vnet-V1-Fauna-Dev-gerwc"
+        },
+        "publicIpAddressName2": {
+            "value": "vm-fauna-test-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Static"
+        },
+        "publicIpAddressSku": {
+            "value": "Standard"
+        },
+        "pipDeleteOption": {
+            "value": "Delete"
+        },
+        "virtualMachineName": {
+            "value": "vm-fauna-test"
+        },
+        "virtualMachineName2": {
+            "value": "vm-fauna-test"
+        },
+        "virtualMachineComputerName2": {
+            "value": "vm-fauna-test"
+        },
+        "virtualMachineRG": {
+            "value": "rg-V1-Fauna-Dev-gerwc"
+        },
+        "osDiskType": {
+            "value": "StandardSSD_LRS"
+        },
+        "osDiskDeleteOption": {
+            "value": "Delete"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_B1ls"
+        },
+        "nicDeleteOption": {
+            "value": "Delete"
+        },
+        "adminUsername": {
+            "value": "faunaAdmin01"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "virtualMachine2Zone": {
+            "value": "2"
+        },
+        "backupVaultName": {
+            "value": "defaultVault226"
+        },
+        "backupFabricName": {
+            "value": "Azure"
+        },
+        "backupVaultRGName": {
+            "value": "rg-V1-Fauna-Dev-gerwc"
+        },
+        "backupVaultRGIsNew": {
+            "value": false
+        },
+        "backupPolicyName": {
+            "value": "DailyPolicy-lmgb9309"
+        },
+        "backupPolicySchedule": {
+            "value": {
+                "schedulePolicyType": "SimpleSchedulePolicy",
+                "scheduleRunFrequency": "Daily",
+                "scheduleRunTimes": [
+                    "2023-09-12T14:00:00.000Z"
+                ],
+                "scheduleWeeklyFrequency": 0,
+                "scheduleRunDays": []
+            }
+        },
+        "backupPolicyRetention": {
+            "value": {
+                "retentionPolicyType": "LongTermRetentionPolicy",
+                "dailySchedule": {
+                    "retentionTimes": [
+                        "2023-09-12T14:00:00.000Z"
+                    ],
+                    "retentionDuration": {
+                        "count": 30,
+                        "durationType": "Days"
+                    }
+                },
+                "weeklySchedule": null,
+                "monthlySchedule": null,
+                "yearlySchedule": null
+            }
+        },
+        "backupPolicyTimeZone": {
+            "value": "UTC"
+        },
+        "backupInstantRpRetentionRangeInDays": {
+            "value": 2
+        },
+        "backupInstantRPDetails": {
+            "value": {
+                "azureBackupRGNamePrefix": "",
+                "azureBackupRGNameSuffix": ""
+            }
+        },
+        "backupItemName": {
+            "value": "vm;iaasvmcontainerv2;rg-V1-Fauna-Dev-gerwc;vm-fauna-test"
+        }
+    }
+}

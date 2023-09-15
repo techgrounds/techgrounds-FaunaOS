@@ -29,7 +29,6 @@ param dnsServers array
 param allowedSubNsg string
 
 
-
 var vnetName =  'vnet-${groupName}-${env}-${locationShortName}'
 var nsgSecurityRules = json(loadTextContent('../../parameters/nsg_rules.json')).securityRules
 var nsgName = 'nsg-${groupName}-${env}-${locationShortName}'
@@ -67,6 +66,17 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2023-04-01' = {
       name: 'snet-${subnet.name}-${env}-${locationShortName}'
       properties: {
         addressPrefix: subnet.subnetPrefix
+        serviceEndpoints: contains(subnet, 'serviceEndpoints') ? subnet.serviceEndpoints : []
+        delegations: contains(subnet, 'delegation') ? [
+          {
+            name: '${subnet.delegations}'
+            properties:{
+              serviceName: subnet.delegations
+            }
+          }
+            ]  : []
+        privateEndpointNetworkPolicies: contains(subnet, 'privateEndpointNetworkPolicies') ? subnet.privateEndpointNetworkPolicies : null
+        privateLinkServiceNetworkPolicies: contains(subnet, 'privateLinkServiceNetworkPolicies') ? subnet.privateLinkServiceNetworkPolicies : null
         // Defines what subnet gets a nsg but using the output of the NSG resource-ID
         networkSecurityGroup: subnet.name == '${allowedSubNsg}' ? {
           id: networkSecurityGroup.id
@@ -75,6 +85,9 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2023-04-01' = {
     }]
   }
 }
+
+output virtualNetworkId string = virtualNetwork.id
+
 
 // // ------------
 // Notes
