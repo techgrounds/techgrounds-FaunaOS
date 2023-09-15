@@ -79,6 +79,13 @@ param virtualMachine2Zone string
 @secure()
 param adminPassword string
 
+param moduleGroup array = [
+  'Web'
+  'Man'
+  'vmWin'
+  'vmlinux'
+]
+
 
 // // --------------------------------------------------
 // Variable declaration
@@ -86,7 +93,10 @@ param adminPassword string
 
 var groupName = '${product}-${component}'
 var enviromentName = '${groupName}-${env}-${locationShortName}'
-var resourceGroupName = 'rg-${enviromentName}'
+var resourceGroupNameFront = 'rg-${enviromentName}-${moduleGroup[0]}'
+var resourceGroupNameBack = 'rg-${enviromentName}-${moduleGroup[1]}'
+var resourceGroupNameVmFront = 'rg-${enviromentName}-${moduleGroup[2]}'
+var resourceGroupNameVmBack = 'rg-${enviromentName}-${moduleGroup[3]}'
 var locationShortName = locationList[location]
 var keyVaultName = 'kv-${product}${component}${env}${locationShortName}${UniqueValue}I'
 var environmentName = '${product}-${component}-${env}-${locationShortName}'
@@ -101,20 +111,40 @@ var tagValues = {
 }
 
 
-
 // // ------------------------------------------------
 // Resource declaration
 // ---------------------------------------------------
 
-resource resourceGroup 'Microsoft.Resources/resourceGroups@2022-09-01' = {
-  name: resourceGroupName
+// resourceGroups [4] ----- 
+
+resource resourceGroupFront 'Microsoft.Resources/resourceGroups@2022-09-01' = {
+  name: resourceGroupNameFront
   location: location
   tags: tagValues
 }
 
+resource resourceGroupBack 'Microsoft.Resources/resourceGroups@2022-09-01' = {
+  name: resourceGroupNameBack
+  location: location
+  tags: tagValues
+}
 
-module virtualNetwork 'modules/virtualNetwork/virtualNetwork.bicep' = {
-  scope: resourceGroup
+resource resourceGroupVmFront 'Microsoft.Resources/resourceGroups@2022-09-01' = {
+  name: resourceGroupNameVmFront
+  location: location
+  tags: tagValues
+}
+
+resource resourceGroupVmBack 'Microsoft.Resources/resourceGroups@2022-09-01' = {
+  name: resourceGroupNameVmBack
+  location: location
+  tags: tagValues
+}
+
+// virtualNetworks [2] -----
+
+module virtualNetworkFront'modules/virtualNetwork/virtualNetwork.bicep' = {
+  scope: resourceGroup(resourceGroupNameFront)
   name: 'vnet-${product}-${component}-${env}-${locationShortName}-dp'
   params: {
     addressPrefixes: addressPrefixes
@@ -129,9 +159,26 @@ module virtualNetwork 'modules/virtualNetwork/virtualNetwork.bicep' = {
         }
       }
 
+module virtualNetworkBack 'modules/virtualNetwork/virtualNetwork.bicep' = {
+  scope: resourceGroup(resourceGroupNameBack)
+  name: 'vnet-${product}-${component}-${env}-${locationShortName}-dp'
+  params: {
+    addressPrefixes: addressPrefixes
+    env: env
+    location: location
+    tagValues: tagValues
+    locationShortName: locationShortName
+    dnsServers: dnsServers
+    groupName: groupName
+    subnets: subnets
+    allowedSubNsg: allowedSubNsg
+        }
+      }
+      
+
 module keyVault 'modules/keyVault/keyVault.bicep' = {
   name: 'kv${environmentName}-dp'
-  scope: resourceGroup
+  scope: resourceGroup(resourceGroupNameBack)
   params: {
     keyVault: keyVaultProperties
     location: location
@@ -139,7 +186,7 @@ module keyVault 'modules/keyVault/keyVault.bicep' = {
     env: env
     keyVaultName: keyVaultName
     tenantId: tenantId
-    virtualNetworkId: virtualNetwork.outputs.virtualNetworkId
+    virtualNetworkId: virtualNetworkFront.outputs.virtualNetworkId
     tagValues: tagValues
     objectId: objectId
   }
@@ -147,7 +194,7 @@ module keyVault 'modules/keyVault/keyVault.bicep' = {
 }
 
 module webServerVM './modules/virtualMachines/webservervm.bicep' = {
-  scope: resourceGroup
+  scope: resourceGroup(resourceGroupNameVmFront)
   name: 'webServerVM'
   params: {
     location: location
@@ -155,7 +202,7 @@ module webServerVM './modules/virtualMachines/webservervm.bicep' = {
     publicIpAddressSku: publicIpAddressSku // Replace with your desired value
     pipDeleteOption: pipDeleteOption // Replace with your desired value
     virtualMachineComputerName2: virtualMachineComputerName2 // Replace with your desired value
-    virtualMachineRG: resourceGroupName // Replace with your desired value
+    virtualMachineRG: resourceGroupNameVmFront // Replace with your desired value
     osDiskType: osDiskType // Replace with your desired value
     osDiskDeleteOption: osDiskDeleteOption // Replace with your desired value
     virtualMachineSize: virtualMachineSize // Replace with your desired value
