@@ -1,0 +1,116 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "tenantId": {
+      "value": "de60b253-74bd-4365-b598-b9e55a2b208d"
+    },
+    "objectId": {
+      "value": "34a7f47f-9165-4ad9-8e5f-b81dab43dc13"
+    },
+    "component": {
+      "value": "Fauna"
+    },
+    "env": {
+      "value": "Dev"
+    },
+    "product": {
+      "value": "V1"
+    },
+    "location": {
+      "value": "germanywestcentral"
+    },
+    "locationList": {
+      "value": {
+        "westeurope": "euwest",
+        "germanywestcentral": "gerwc"
+      }
+    },
+    "subnets": {
+      "value": [
+        {
+          "name": "frontend",
+          "subnetPrefix": "10.10.10.0/25",
+          "privateEndpointNetworkPolicies": "disabled",
+          "serviceEndpoints": [
+            {
+              "service": "Microsoft.keyvault",
+              "locations": [
+                "*"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "future",
+          "subnetPrefix": "10.10.10.128/25"
+        }
+      ]
+    },
+    "addressPrefixes": {
+      "value": [
+        "10.10.10.0/24"
+      ]
+    },
+    "dnsServers": {
+      "value": []
+    },
+    "allowedSubNsg": {
+      "value": "frontend"
+    },
+    "keyVaultProperties": {
+      "value": {
+        "sku": "Standard",
+        "enabledForDeployment": "false",
+        "enabledForTemplateDeployment": "true",
+        "enabledForDiskEncryption": "false",
+        "enableRbacAuthorization": "false",
+        "enableSoftDelete": "true",
+        "softDeleteRetentionInDays": "90",
+        "enablePurgeProtection": "true",
+        "enableNetworkAcls": "true",
+        "accessPolicies": {
+          "tenantid": "de60b253-74bd-4365-b598-b9e55a2b208d",
+          "objectid": "34a7f47f-9165-4ad9-8e5f-b81dab43dc13",
+          "permissions": {}
+        },
+        "allowedSubnets": [
+          "snet-frontend"
+        ]
+      }
+    },
+    "publicIpAddressType": {
+      "value": "static"
+    },
+    "publicIpAddressSku": {
+      "value": "Standard"
+    },
+    "pipDeleteOption": {
+      "value": "Delete"
+    },
+    "virtualMachineComputerName2": {
+      "value": "MyVM"
+    },
+    "osDiskType": {
+      "value": "Standard_LRS"
+    },
+    "osDiskDeleteOption": {
+      "value": "Delete"
+    },
+    "virtualMachineSize": {
+      "value": "Standard_DS2_v2"
+    },
+    "nicDeleteOption": {
+      "value": "Delete"
+    },
+    "adminUsername": {
+      "value": "adminuser"
+    },
+    "virtualMachine2Zone": {
+      "value": "2"
+    },
+    "adminPassword": {
+      "value": "testAdmin01"
+    }
+  }
+}

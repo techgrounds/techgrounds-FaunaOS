@@ -1,0 +1,94 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    // ----------------------- ID Strings Details ----------------------- //
+    "tenantId": {
+      "value": "de60b253-74bd-4365-b598-b9e55a2b208d"
+    },
+    "objectId": {
+      "value": "34a7f47f-9165-4ad9-8e5f-b81dab43dc13"
+    },
+    // ----------------------- Global Parameters ----------------------- //
+    "env": {
+      "value": "Dev"
+    },
+    "product": {
+      "value": "V5"
+    },
+    "location": {
+      "value": "germanywestcentral"
+    },
+    "locationList": {
+      "value": {
+        "westeurope": "euwest",
+        "germanywestcentral": "gerwc"
+      }
+    },
+   // ----------------------- Components ----------------------- //
+    "frontendComponent": {
+      "value": "web"
+    },
+    "backendComponent": {
+      "value": "admin"
+    },
+    // ----------------------- Frontend Subnets ----------------------- // 
+    "frontendSubnets": { 
+      "value": [
+        {
+          "name": "web",
+          "subnetPrefix": "10.10.10.0/25",
+          "privateEndpointNetworkPolicies": "disabled",
+          "serviceEndpoints": [
+            {
+              "service": "microsoft.keyvault",
+              "locations": ["*"]
+            }
+          ]
+        },
+        {
+          "name": "future",
+          "subnetPrefix": "10.10.10.128/25"
+        }
+      ]
+    },
+    "frontendAddressPrefixes": {
+      "value": ["10.10.10.0/24"]
+    },
+    "frontendDnsServers": {
+      "value": []
+    },
+    "frontendAllowedSubNsg": {
+      "value": "web"
+    },
+   // ----------------------- Backend Subnets ----------------------- //
+    "backendSubnets": {
+      "value": [
+        {
+          "name": "admin",
+          "subnetPrefix": "10.10.20.0/25",
+          "privateEndpointNetworkPolicies": "disabled",
+          "serviceEndpoints": [
+            {
+              "service": "Microsoft.keyvault",
+              "locations": ["*"]
+            }
+          ]
+        },
+        {
+          "name": "future",
+          "subnetPrefix": "10.10.20.128/25"
+        }
+      ]
+    },
+    "backendAddressPrefixes": {
+      "value": ["10.10.20.0/24"]
+    },
+    "backendDnsServers": {
+      "value": []
+    },
+    "backendAllowedSubNsg": {
+      "value": "admin"
+    }
+  }
+}

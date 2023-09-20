@@ -1,0 +1,2 @@
+using './shared-data.bicep'
+

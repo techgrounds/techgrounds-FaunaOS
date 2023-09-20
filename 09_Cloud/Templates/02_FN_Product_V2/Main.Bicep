@@ -7,7 +7,7 @@ targetScope = 'subscription'
 @description('Application components these resources are part of.')
 param component string
 
-@description('Enviroment for deployment')
+@description('Environment for deployment')
 param env string
 
 @description('Current Date for deployment records. Do not overwrite!')
@@ -23,22 +23,22 @@ param product string
 @description('Azure region for deployment')
 param location string
 
-@description('A list of required and optional subnet propeties')
+@description('A list of required and optional subnet properties')
 param subnets array
 
 @description('Virtual Network Address Range')
 param addressPrefixes array
 
-@description('Dictionary of deployment regions and the shortname')
+@description('Dictionary of deployment regions and the short name')
 param locationList object
 
 @description('Custom DNS servers for Virtual Network')
 param dnsServers array
 
-@description('Defines what subnet will have a nsg attached to them')
+@description('Defines what subnet will have an NSG attached to them')
 param allowedSubNsg string
 
-@description('Properties for keyvault deployment')
+@description('Properties for key vault deployment')
 param keyVaultProperties object
 
 @description('Current Tenant Id & Object Id to be used in deployment')
@@ -79,19 +79,28 @@ param virtualMachine2Zone string
 @secure()
 param adminPassword string
 
+param moduleGroup array = [
+  'front'
+  'back'
+]
+
+param vmOs array = [
+  'linux'
+  'windows'
+  
+]
+
 
 // // --------------------------------------------------
 // Variable declaration
 // --------------------------------------------------
 
 var groupName = '${product}-${component}'
-var enviromentName = '${groupName}-${env}-${locationShortName}'
-var resourceGroupName = 'rg-${enviromentName}'
+var environmentName = '${groupName}-${env}-${locationShortName}'
+var resourceGroupNameFront = 'rg-${environmentName}-${moduleGroup[0]}'
+var resourceGroupNameBack = 'rg-${environmentName}-${moduleGroup[1]}'
 var locationShortName = locationList[location]
 var keyVaultName = 'kv-${product}${component}${env}${locationShortName}${UniqueValue}I'
-var environmentName = '${product}-${component}-${env}-${locationShortName}'
-
-
 
 var tagValues = {
   createdBy: 'AZ CLI'
@@ -100,22 +109,42 @@ var tagValues = {
   product: product
 }
 
+// --------------------------------------------------
+// Resource group declarations
+// --------------------------------------------------
 
 
-// // ------------------------------------------------
-// Resource declaration
-// ---------------------------------------------------
+resource resourceGroupFront 'Microsoft.Resources/resourceGroups@2021-04-01' = {
+  name: resourceGroupNameFront
+  location: location
+  tags: tagValues
 
-resource resourceGroup 'Microsoft.Resources/resourceGroups@2022-09-01' = {
-  name: resourceGroupName
+}
+
+resource resourceGroupBack 'Microsoft.Resources/resourceGroups@2021-04-01' = {
+  name: resourceGroupNameBack
   location: location
   tags: tagValues
 }
 
 
-module virtualNetwork 'modules/virtualNetwork/virtualNetwork.bicep' = {
-  scope: resourceGroup
+
+output resourceGroupFrontId string = resourceGroupFront.id
+output resourceGroupBackId string = resourceGroupBack.id
+
+
+// -- output declarations --
+
+
+
+// --------------------------------------------------
+// Resource declarations
+// --------------------------------------------------
+
+module virtualNetworkFront'./Modules/Frontend/webVnet.bicep' = {
+  scope: resourceGroup(resourceGroupNameFront)
   name: 'vnet-${product}-${component}-${env}-${locationShortName}-dp'
+  dependsOn: [resourceGroupFront]
   params: {
     addressPrefixes: addressPrefixes
     env: env
@@ -128,34 +157,55 @@ module virtualNetwork 'modules/virtualNetwork/virtualNetwork.bicep' = {
     allowedSubNsg: allowedSubNsg
         }
       }
+  
 
-module keyVault 'modules/keyVault/keyVault.bicep' = {
+module virtualNetworkBack './Modules/Backend/adminVnet.bicep' = {
+  scope: resourceGroup(resourceGroupNameBack)
+  name: 'vnet-${product}-${component}-${env}-${locationShortName}-dp'
+   dependsOn: [resourceGroupBack]
+  params: {
+    addressPrefixes: addressPrefixes
+    env: env
+    location: location
+    tagValues: tagValues
+    locationShortName: locationShortName
+    dnsServers: dnsServers
+    groupName: groupName
+    subnets: subnets
+    allowedSubNsg: allowedSubNsg
+        }
+      }
+      
+
+module keyVault './Modules/Shared/keyVault.bicep' = {
   name: 'kv${environmentName}-dp'
-  scope: resourceGroup
+  scope: resourceGroup(resourceGroupNameBack)
+  dependsOn: [resourceGroupBack, virtualNetworkBack]  
   params: {
     keyVault: keyVaultProperties
-    location: location
+    location: location 
     locationShortName: locationShortName
-    env: env
+    env: env 
     keyVaultName: keyVaultName
     tenantId: tenantId
-    virtualNetworkId: virtualNetwork.outputs.virtualNetworkId
+    virtualNetworkId: virtualNetworkBack.outputs.virtualNetworkId
     tagValues: tagValues
     objectId: objectId
   }
   
 }
 
-module webServerVM './modules/virtualMachines/webservervm.bicep' = {
-  scope: resourceGroup
-  name: 'webServerVM'
+module webServerVM './Modules/Frontend/webVm.bicep' = {
+  scope: resourceGroup(resourceGroupNameFront)
+  name: '${moduleGroup[0]}${vmOs[0]}-VM'
+  dependsOn: [resourceGroupFront, keyVault] 
   params: {
     location: location
     publicIpAddressType: publicIpAddressType // Replace with your desired value
     publicIpAddressSku: publicIpAddressSku // Replace with your desired value
     pipDeleteOption: pipDeleteOption // Replace with your desired value
     virtualMachineComputerName2: virtualMachineComputerName2 // Replace with your desired value
-    virtualMachineRG: resourceGroupName // Replace with your desired value
+    virtualMachineRG: resourceGroupNameFront // Replace with your desired value
     osDiskType: osDiskType // Replace with your desired value
     osDiskDeleteOption: osDiskDeleteOption // Replace with your desired value
     virtualMachineSize: virtualMachineSize // Replace with your desired value
@@ -166,6 +216,34 @@ module webServerVM './modules/virtualMachines/webservervm.bicep' = {
     groupName: groupName
     locationList: locationList
     adminPassword: adminPassword
+    moduleGroup: moduleGroup
+    vmOs: vmOs
+  }
+}
+
+module adminServerVM './Modules/Frontend/webVm.bicep' = {
+  scope: resourceGroup(resourceGroupNameBack)
+  name: '${moduleGroup[1]}${vmOs[1]}-VM'
+  dependsOn: [resourceGroupBack, keyVault] 
+  params: {
+    location: location
+    publicIpAddressType: publicIpAddressType // Replace with your desired value
+    publicIpAddressSku: publicIpAddressSku // Replace with your desired value
+    pipDeleteOption: pipDeleteOption // Replace with your desired value
+    virtualMachineComputerName2: virtualMachineComputerName2 // Replace with your desired value
+    virtualMachineRG: resourceGroupNameFront // Replace with your desired value
+    osDiskType: osDiskType // Replace with your desired value
+    osDiskDeleteOption: osDiskDeleteOption // Replace with your desired value
+    virtualMachineSize: virtualMachineSize // Replace with your desired value
+    nicDeleteOption: nicDeleteOption // Replace with your desired value
+    adminUsername: adminUsername // Replace with your desired value
+    virtualMachine2Zone: virtualMachine2Zone // Replace with your desired value
+    env: env
+    groupName: groupName
+    locationList: locationList
+    adminPassword: adminPassword
+    moduleGroup:  moduleGroup
+    vmOs: vmOs
   }
 }
 
