@@ -20,7 +20,7 @@ param tagValues object
 @description('Group name is created based on the product name and component being deployed for frontend')
 param backendGroupName string // Updated parameter name
 
-@description('Short name for the frontend deployment region')
+@description('Short name for the deployment region')
 param locationShortName string // Updated parameter name
 
 @description('Custom DNS servers for Virtual Network in frontend')
@@ -28,8 +28,11 @@ param backendDnsServers array // Updated parameter name
 
 param backendAllowedSubNsg string // Updated parameter name
 
+@description('Application components these resources are part of.')
+param backendComponent string
+
 var backendVNetName =  'vnet-${backendGroupName}-${env}-${locationShortName}' // Updated variable name
-var backendNsgSecurityRules = json(loadTextContent('../99_Parameters/Backend/backend_nsg_rules.json')).securityRules // Updated variable name
+var backendNsgSecurityRules = json(loadTextContent('../99_Parameters/BackendParams/backend_nsg_rules.json')).securityRules // Updated variable name
 var backendNsgName = 'nsg-${backendGroupName}-${env}-${locationShortName}' // Updated variable name
 var backendDnsServersVariable = {
   dnsServers: array(backendDnsServers) // Updated variable name
@@ -85,6 +88,7 @@ resource backendVirtualNetwork 'Microsoft.Network/virtualNetworks@2023-04-01' = 
 
 // Output for backend Virtual Network
 output backendVirtualNetworkId string = backendVirtualNetwork.id // Updated variable name
+output backendSubnetId string = resourceId('Microsoft.Network/virtualNetworks/subnets', backendVirtualNetwork.name, 'snet-${backendComponent}-${env}-${locationShortName}')
 
 // ------------
 // Notes

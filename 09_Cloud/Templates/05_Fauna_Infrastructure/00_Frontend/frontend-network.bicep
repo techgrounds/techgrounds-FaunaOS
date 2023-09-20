@@ -30,7 +30,7 @@ param frontendAllowedSubNsg string
 
 
 var frontendVNetName =  'vnet-${frontendGroupName}-${env}-${locationShortName}'
-var frontendNsgSecurityRules = json(loadTextContent('../99_Parameters/Frontend/frontend_nsg_rules.json')).securityRules
+var frontendNsgSecurityRules = json(loadTextContent('../99_Parameters/FrontendParams/frontend_nsg_rules.json')).securityRules
 var frontendNsgName = 'nsg-${frontendGroupName}-${env}-${locationShortName}'
 var frontendDnsServersVariable = {
   dnsServers: array(frontendDnsServers)

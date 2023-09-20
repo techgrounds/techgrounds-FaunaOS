@@ -71,6 +71,16 @@ param backendDnsServers array // Updated parameter name
 param backendAllowedSubNsg string // Updated parameter name
 
 // ----------------
+// shared deployment parameters
+// ---- Component
+
+@description('Application components these resources are part of.')
+param sharedComponent string
+
+@description('Properties for key vault deployment')
+param keyVaultProperties object
+
+// ----------------
 // Global Variable declaration
 // ----------------
 
@@ -101,6 +111,14 @@ var backendResourceGroupName = 'rg-${backendEnvironmentName}' // Updated variabl
 var backendEnvironmentName = '${backendGroupName}-${env}-${locationShortName}' // Updated variable name
 var backendGroupName = '${product}-${backendComponent}' // Updated variable name
 
+// -------------------------
+// Shared Variable declaration
+// --- 
+
+var sharedResourceGroupName = 'rg-${sharedEnvironmentName}' // Updated variable name
+var sharedEnvironmentName = '${sharedGroupName}-${env}-${locationShortName}' // Updated variable name
+var sharedGroupName = '${product}-${sharedComponent}' // Updated variable name
+var keyVaultName = 'kv-${product}${sharedComponent}${env}${locationShortName}${UniqueValue}I'
 // ...
 // ------------------------------------------------
 // Frontend Resource declaration
@@ -150,7 +168,37 @@ module backendVirtualNetwork '01_Backend/backend-network.bicep' = {
     backendGroupName: backendGroupName // Updated variable name
     backendSubnets: backendSubnets // Updated parameter name
     backendAllowedSubNsg: backendAllowedSubNsg // Updated parameter name
+    backendComponent: backendComponent
   }
+}
+
+resource sharedResourceGroup 'Microsoft.Resources/resourceGroups@2022-09-01' = {
+  name: sharedResourceGroupName // Updated variable name
+  location: location // Updated variable name
+  tags: tagValues // Updated variable name
+}
+
+
+module keyVault '02_Shared/keyVault.bicep' = {
+  name: 'kv${sharedEnvironmentName}-dp'
+  scope: resourceGroup(sharedResourceGroupName)
+  dependsOn: [sharedResourceGroup]  
+  params: {
+    keyVault: keyVaultProperties
+    location: location 
+    /*
+    locationShortName: locationShortName
+    env: env 
+    virtualNetworkId: backendVirtualNetwork.outputs.backendVirtualNetworkId
+    */
+    keyVaultName: keyVaultName
+    tenantId: tenantId
+
+    tagValues: tagValues
+    objectId: objectId
+    backendSubnetId: backendVirtualNetwork.outputs.backendSubnetId
+  }
+  
 }
 
 output tenantId string = tenantId
