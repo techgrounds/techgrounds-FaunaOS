@@ -115,10 +115,4 @@ output keyVaultId string = keyvault.id
 output keyVaultName string = keyvault.name
 
 
-resource secret1 'Microsoft.KeyVault/vaults/secrets@2023-02-01' = {
-  parent: keyvault
-  name: 'testsecret'
-  properties: {
-     value: 'mysecret'
-  }
-}
+

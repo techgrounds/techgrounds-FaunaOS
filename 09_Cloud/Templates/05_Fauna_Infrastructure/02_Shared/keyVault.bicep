@@ -47,6 +47,8 @@ var ipRules = json(loadTextContent('../99_Parameters/SharedParams/keyVaultIpAllo
 resource keyvault 'Microsoft.KeyVault/vaults@2023-02-01' = {
   name: keyVaultName
   location: location
+  tags: tagValues
+  dependsOn: []
   properties: {
     enabledForDeployment: keyVault.enabledForDeployment
     enabledForTemplateDeployment: keyVault.enabledForTemplateDeployment
@@ -62,7 +64,7 @@ resource keyvault 'Microsoft.KeyVault/vaults@2023-02-01' = {
         objectId: objectId
         tenantId: tenantId
         permissions: {
-          keys: [
+         keys: [
               'get'
               'list'
               'create'
@@ -115,11 +117,27 @@ resource keyvault 'Microsoft.KeyVault/vaults@2023-02-01' = {
     }]
   }
 }
-tags: tagValues
-dependsOn: []
-}
+  resource secretName 'secrets' = {
+    name: AdminSecretName
+    properties: {
+    value: Adminpassword
+    }
+  }
+  
+  }
 
-output keyVaultId string = keyvault.id
+
+
+param AdminSecretName string
+
+
+@secure()
+param Adminpassword string
+
+
+
+output keyVaultResourceId string = keyvault.id
 output keyVaultName string = keyvault.name
+output keyVaultSecretUri string = keyvault.properties.vaultUri
 
 

@@ -7,7 +7,7 @@ targetScope = 'subscription'
 @description('Environment for frontend deployment') // Updated description
 param env string // Updated parameter name
 
-@description('Azure region for frontend deployment') // Updated description
+@description('Azure region for deployment') // Updated description
 param location string // Updated parameter name
 
 @description('Current Date for deployment records. Do not overwrite!')
@@ -80,6 +80,9 @@ param sharedComponent string
 @description('Properties for key vault deployment')
 param keyVaultProperties object
 
+
+param AdminSecretName string
+
 // ----------------
 // Global Variable declaration
 // ----------------
@@ -145,7 +148,49 @@ module frontendVirtualNetwork '00_Frontend/frontend-network.bicep' = {
     frontendAllowedSubNsg: frontendAllowedSubNsg // Updated parameter name
   }
 }
+@secure()
+param frontendAdminPassword string
 
+param frontendAdminUsername string
+param frontendNicDeleteOption string
+param frontendOsDiskDeleteOption string
+param frontendOsDiskType string
+param frontendPipDeleteOption string
+param frontendPublicIpAddressSku string
+param frontendPublicIpAddressType string
+param frontendVmComputerName string
+param frontendVmSize string
+param frontendVmZone string
+
+
+module frontendCompute '00_Frontend/frontend-compute.bicep' = {
+  name: 'vm-${frontendComponent}-${env}-${locationShortName}-compute' // Updated module name
+  dependsOn: [frontendVirtualNetwork]
+  scope: frontendResourceGroup
+  params: {
+    keyVaultProperties: keyVaultProperties
+    objectId: objectId
+    backendSubnetId: backendVirtualNetwork.outputs.backendSubnetId
+    sharedComponent: sharedComponent
+    location: location // Updated variable name
+    env: env
+    frontendAdminPassword: frontendAdminPassword
+    frontendAdminUsername: frontendAdminUsername
+    frontendComponent: frontendComponent
+    frontendNicDeleteOption: frontendNicDeleteOption
+    frontendOsDiskDeleteOption: frontendOsDiskDeleteOption
+    frontendOsDiskType: frontendOsDiskType
+    frontendPipDeleteOption:  frontendPipDeleteOption
+    frontendPublicIpAddressSku:  frontendPublicIpAddressSku
+    frontendPublicIpAddressType: frontendPublicIpAddressType
+    frontendVmComputerName: frontendVmComputerName
+    frontendVmSize: frontendVmSize
+    frontendVmZone: frontendVmZone
+    keyVaultName: keyVaultName
+    locationList: locationList
+    product: product 
+  }
+}
 // ...
 
 resource backendResourceGroup 'Microsoft.Resources/resourceGroups@2022-09-01' = {
@@ -180,20 +225,20 @@ resource sharedResourceGroup 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 
 
 module keyVault '02_Shared/keyVault.bicep' = {
-  name: 'kv${sharedEnvironmentName}-dp'
-  scope: resourceGroup(sharedResourceGroupName)
-  dependsOn: [sharedResourceGroup]  
+  name: 'kv-${sharedEnvironmentName}-dp' // Updated module name
+  scope: sharedResourceGroup
   params: {
+    AdminSecretName: AdminSecretName
+    Adminpassword: frontendAdminPassword
     keyVault: keyVaultProperties
-    location: location 
-    /*
+    location: location
+    /* 
     locationShortName: locationShortName
     env: env 
     virtualNetworkId: backendVirtualNetwork.outputs.backendVirtualNetworkId
     */
     keyVaultName: keyVaultName
     tenantId: tenantId
-
     tagValues: tagValues
     objectId: objectId
     backendSubnetId: backendVirtualNetwork.outputs.backendSubnetId
