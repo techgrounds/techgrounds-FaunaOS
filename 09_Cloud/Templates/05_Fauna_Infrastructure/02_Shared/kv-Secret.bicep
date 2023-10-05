@@ -1,31 +1,32 @@
 /*
-
-param location string
-param AdminSecretName string
-
-param KeyvaultName string
-
 @secure()
-param Adminpassword string
+param secretValue string
 
-resource keyVault 'Microsoft.KeyVault/vaults@2023-02-01' = {
-  location: location
-  name: KeyvaultName
-  properties: {
-    sku: {
-      family: 'A'
-      name: 'standard'
-    }
-    tenantId: tenant().tenantId
-  }
-  resource secretName 'secrets@2023-02-01' = {
-    name: 'sshkey'
-    properties: {
-    value: Adminpassword
-   }
-  }
+param keyVaultName string
+
+
+resource keyVaults 'Microsoft.KeyVault/vaults@2021-04-01-preview' existing = {
+  name: keyVaultName
 }
 
+
+resource secrets 'Microsoft.KeyVault/vaults/secrets@2023-02-01' = {
+  name: 'sec-${keyVaultName}'
+  parent: keyVaults
+  properties: {
+    contentType: 'ssh-public-key'
+    value: secretValue
+      attributes: {
+        enabled: true
+      }}}
+
+
+  resource sshKeySecret 'Microsoft.KeyVault/vaults/secrets@2021-04-01-preview' = {
+  name: 'mySshKeySecret' // Replace with your desired name
+  parent: keyVaults
+  properties: {
+    contentType: 'application/octet-stream'
+    value: base64(concat('-----BEGIN OPENSSH PRIVATE KEY-----\n', fileToString('mykey'), '\n-----END OPENSSH PRIVATE KEY-----\n'))
+  }
+}
 */
-
-

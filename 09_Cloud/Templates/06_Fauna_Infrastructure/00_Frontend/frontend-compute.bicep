@@ -101,8 +101,16 @@ resource keyvault 'Microsoft.KeyVault/vaults/secrets@2023-02-01' = {
 
 
 
-@secure()
-param keydata string
+param sshKeyName string
+
+param sharedResourceGroupName string
+
+resource kvRef 'Microsoft.Compute/sshPublicKeys@2023-07-01' existing = {
+  name: sshKeyName
+  scope: resourceGroup(sharedResourceGroupName)
+
+}
+
 
 resource frontendVirtualMachine 'Microsoft.Compute/virtualMachines@2023-07-01' = {
   name: frontendVmName
@@ -121,7 +129,7 @@ resource frontendVirtualMachine 'Microsoft.Compute/virtualMachines@2023-07-01' =
           publicKeys: [
             {
               path: '/home/${frontendAdminUsername}/.ssh/authorized_keys'
-              keyData: keydata
+              keyData: kvRef.properties.publicKey
             }
         ]
       }

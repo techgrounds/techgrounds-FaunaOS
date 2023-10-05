@@ -1,0 +1,140 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+
+// ----------------------- ID Strings Details ----------------------- //
+
+      // Global Parameters
+      "tenantId": {
+        "value": "PrefertenantID"
+      },
+      "objectId": {
+        "value": "34a7f47f-9165-4ad9-8e5f-b81dab43dc13"
+      },
+      "env": {
+        "value": "Dev"
+      },
+      "product": {
+        "value": "V1"
+      },
+      "location": {
+        "value": "germanywestcentral"
+      },
+      "locationList": {
+        "value": {
+          "westeurope": "euwest",
+          "germanywestcentral": "gerwc"
+        }
+      },
+
+// ----------------------- Components Array ----------------------- // 
+ 
+      "components": {
+        "value": [
+      //  [0]  //   
+        "shared",
+      //  [1]  //    
+        "frontend",
+      //  [2]  //    
+        "backend"
+        ]
+      },
+
+// ----------------------- Network Parameters ----------------------- //
+
+// ----------------------- Frontend Network ----------------------- //
+      // Frontend Subnets
+      "frontendSubnets": {
+        "value": [
+          {
+            "name": "web",
+            "subnetPrefix": "10.10.10.0/25",
+            "privateEndpointNetworkPolicies": "disabled",
+            "serviceEndpoints": [
+              {
+                "service": "microsoft.keyvault",
+                "locations": ["*"]
+              }
+            ]
+          },
+          {
+            "name": "future",
+            "subnetPrefix": "10.10.10.128/25"
+          }
+        ]
+      },
+      "frontendAddressPrefixes": {
+        "value": ["10.10.10.0/24"]
+      },
+      "frontendDnsServers": {
+        "value": []
+      },
+      "frontendAllowedSubNsg": {
+        "value": "web"
+      },
+
+// ----------------------- Backend Network ----------------------- //
+
+      // Backend Subnets
+      "backendSubnets": {
+        "value": [
+          {
+            "name": "admin",
+            "subnetPrefix": "10.10.20.0/25",
+            "privateEndpointNetworkPolicies": "disabled",
+            "serviceEndpoints": [
+              {
+                "service": "Microsoft.keyvault",
+                "locations": ["*"]
+              }
+            ]
+          },
+          {
+            "name": "future",
+            "subnetPrefix": "10.10.20.128/25"
+          }
+        ]
+      },
+      "backendAddressPrefixes": {
+        "value": ["10.10.20.0/24"]
+      },
+      "backendDnsServers": {
+        "value": []
+      },
+      "backendAllowedSubNsg": {
+        "value": "backend"
+      },
+
+// ----------------------- Compute Parameters ----------------------- // 
+
+      // Frontend Compute Parameters
+      "frontendVmSize": {
+        "value": "Standard_DS1_v2"
+      },
+      "frontendVmImage": {
+        "value": "UbuntuLTS"
+      },
+      // Backend Compute Parameters
+      "backendVmSize": {
+        "value": "Standard_DS1_v2"
+      },
+      "backendVmImage": {
+        "value": "UbuntuLTS"
+      },
+
+// ----------------------- Shared Data Module Parameters ----------------------- //
+
+      // Storage Account Parameters
+      "storageAccountSku": {
+        "value": "Standard_LRS"
+      },
+
+      // KeyVault Parameters
+      "keyVaultSku": {
+        "value": "standard"
+      }
+
+// ----------------------- End -> dont forget comma }, <------------------------ //
+    }
+  }

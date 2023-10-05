@@ -88,11 +88,14 @@ resource frontendVirtualNetwork 'Microsoft.Network/virtualNetworks@2023-04-01' =
 
 // Output for frontend Virtual Network
 output frontendVirtualNetworkId string = frontendVirtualNetwork.id
-/*
+
+output frontendSubnetId string = frontendVirtualNetwork.properties.subnets[1].id
+
+
 output SubnetNames array = [for subnet in frontendSubnets: 'snet-${subnet.name}-${env}-${locationShortName}']
 
 output frontendSubnetName string = frontendSubnets[1].name
-*/
+
 // ------------
 // Notes
 // ---------------

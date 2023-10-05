@@ -1,0 +1,36 @@
+{
+
+  "securityRules": [
+          {
+              "name": "DenyAllOutbound",
+              "properties": {
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "VirtualNetwork",
+              "access": "Deny",
+              "priority": 100,
+              "direction": "Outbound"
+              }
+          },
+          {
+              "name": "Port_443_AllowInboundHttps",
+              "properties": {
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "443",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "VirtualNetwork",
+              "access": "Allow",
+              "priority": 200,
+              "direction": "Inbound"
+              }
+          }
+      ]
+  }
+  
+  
+  
+  
+  

@@ -58,9 +58,6 @@ param tenantId string
 param objectId string
 
 
-
-
-
 // -----------------------------------------------------------------------------------------------------------------------------------
 // Frontend Parameters
 // -----------------------------------------------------------------------------------------------------------------------------------
@@ -126,13 +123,23 @@ param backendAllowedSubNsg string // Updated parameter name
 // shared deployment parameters
 // -----------------------------------------------------------------------------------------------------------------------------------
 
-@description('Application components these resources are part of.')
+param kvNumber string 
+
+var keyVaultName = 'kv-${sharedComponent}${env}${locationShortName}${kvNumber}'
+
+var sshKeyName = 'sshkey'
+
 param sharedComponent string
 
-// --- Data ----------------
+param sharedProduct string // for kv
 
-@description('Properties for key vault deployment')
-param keyVaultProperties object
+
+var sharedResourceGroupName = 'rg-${sharedEnvironmentName}' // Updated variable name
+var sharedEnvironmentName = '${sharedGroupName}-${env}-${locationShortName}' // Updated variable name
+var sharedGroupName = '${sharedProduct}-${sharedComponent}' // Updated variable name
+
+
+// --- Data ----------------
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -175,12 +182,11 @@ var backendResourceGroupName = 'rg-${backendEnvironmentName}' // Updated variabl
 var backendEnvironmentName = '${backendGroupName}-${env}-${locationShortName}' // Updated variable name
 var backendGroupName = '${product}-${backendComponent}' // Updated variable name
 
+
+
 // -------------------------
 // Shared Variable declaration
 // --- 
-
-var keyVaultName = 'kv-${sharedComponent}${env}${locationShortName}${UniqueValue}I'
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -223,12 +229,9 @@ module frontendVirtualNetwork '00_Frontend/frontend-network.bicep' = {
 // --- Compute ----------------
 
 
-var sshKeyName = 'sec-${sharedComponent}${env}${locationShortName}-ssh'
-
-param keyVaultResourceId string = resourceId('Microsoft.KeyVault/vaults', 'kv-${sharedComponent}${env}gerwc${UniqueValue}I')
 module frontendCompute '00_Frontend/frontend-compute.bicep' = {
   name: 'vm-${frontendComponent}-${env}-${locationShortName}-compute' // Updated module name
-  dependsOn: [secret, frontendVirtualNetwork]
+  dependsOn: [frontendVirtualNetwork]
   scope: frontendResourceGroup
   params: {
     location: location // Updated variable name
@@ -247,7 +250,8 @@ module frontendCompute '00_Frontend/frontend-compute.bicep' = {
     frontendVmZone: frontendVmZone
     locationList: locationList
     product: product
-    keydata: listSecrets(keyVaultResourceId, keyVaultName).value.secretValue
+    sharedResourceGroupName: sharedResourceGroupName
+    sshKeyName: sshKeyName
 
     }
 }
@@ -290,6 +294,40 @@ module backendVirtualNetwork '01_Backend/backend-network.bicep' = {
 
 
 // --- Encrypted ----------------
+
+resource sharedRG 'Microsoft.Resources/resourceGroups@2023-07-01' existing = {
+  name: sharedResourceGroupName
+}
+
+
+param keyVaultProperties object
+
+module kv '02_Shared/keyVault.bicep' = {
+  name: 'kvSubAllowed'
+  scope: sharedRG
+  params:{
+    location: location
+    allowedSubnets: []
+    frontendSubnetId: frontendVirtualNetwork.outputs.frontendSubnetId
+    keyVault: keyVaultProperties
+    keyVaultName: keyVaultName
+    objectId: objectId
+    sshKeyName: sshKeyName
+    tagValues: tagValues
+
+      }
+    }
+
+
+
+
+
+/*
+
+@description('Properties for key vault deployment')
+param keyVaultProperties object
+
+
 module keyVault '02_Shared/keyVault.bicep' = {
   name: 'kv-${backendEnvironmentName}-dp' // Updated module name
   scope: frontendResourceGroup
@@ -317,6 +355,8 @@ module secret '02_Shared/kv-Secret.bicep' = {
 // hier was je gebleven je was bezig met de secret value bij de ssh van de VM te krijgen nadat die wordt aangemaakt in de keyvault, het kan komen door de resourcegroup
   }
 }
+
+*/
 
 // --- Storage ----------------
 

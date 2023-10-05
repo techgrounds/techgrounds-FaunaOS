@@ -1,8 +1,10 @@
 {
     "editor.codeActionsOnSave": {},
-    "terminal.integrated.automationProfile.osx": {},
+    "terminal.integrated.automationProfile.osx": {
+    
+    },
     "terminal.integrated.fontFamily": "MesloLGM Nerd Font",
-    "editor.fontFamily": "MesloLGM Nerd Font",
+    "editor.fontFamily": "JetBrains Mono NL",
     "terminal.integrated.profiles.osx": {
         "bash": {
             "path": "bash",
@@ -48,7 +50,7 @@
     "python.testing.pytestArgs": [
         "."
     ],
-    "terminal.integrated.cwd": "",
+    "terminal.integrated.cwd": "/Users/flora/Documents/Cloud 11/GitHub/techgrounds-FaunaOS/09_Cloud/Templates/05_Fauna_Infrastructure",
     "cSpell.words": [
         "euwest",
         "germanywestcentral",

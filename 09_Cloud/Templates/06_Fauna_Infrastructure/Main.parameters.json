@@ -14,7 +14,7 @@
       "value": "dev"
     },
     "product": {
-      "value": "fntest2"
+      "value": "fntest9"
     },
     "location": {
       "value": "germanywestcentral"
@@ -32,8 +32,16 @@
     "backendComponent": {
       "value": "admin"
     },
+
+   // ----------------------- KeyVault (kv-datadevgerwc01) ----------------------- //
     "sharedComponent": {
       "value": "data"
+    },
+    "sharedProduct": {
+      "value": "fntest9"
+    },
+    "kvNumber": {
+      "value": "09"
     },
     // ----------------------- Frontend Subnets ----------------------- // 
     "frontendSubnets": { 
@@ -47,8 +55,8 @@
               "service": "microsoft.keyvault",
               "locations": ["*"]
             }
-          ]
-        },
+              ]
+            },
         {
           "name": "future",
           "subnetPrefix": "10.10.10.128/25"
@@ -94,6 +102,7 @@
       "value": "backend"
     },
     // ----------------------- Other Parameters ----------------------- //
+    
     "keyVaultProperties": {
       "value": {
         "sku": "Standard",
@@ -112,7 +121,8 @@
           }
         },
         "allowedSubnets": [
-          "snet-admin"
+          "snet-admin",
+          "snet-web"
         ]
       }
     },
@@ -149,5 +159,6 @@
     "frontendVmZone": {
       "value": "2"
     }
-  }
-}
+  }}
+
+

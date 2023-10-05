@@ -1,0 +1,38 @@
+{
+    "securityRules": [
+      {
+        "name": "AllowRdp",
+        "properties": {
+          "protocol": "Tcp",
+          "sourcePortRange": "*",
+          "destinationPortRange": "3389",
+          "sourceAddressPrefix": "*",
+          "destinationAddressPrefix": "*",
+          "access": "Allow",
+          "direction": "Inbound",
+          "priority": 100,
+          "sourcePortRanges": [],
+          "destinationPortRanges": [],
+          "sourceAddressPrefixes": [],
+          "destinationAddressPrefixes": []
+        }
+      },
+      {
+        "name": "AllowSsh",
+        "properties": {
+          "protocol": "Tcp",
+          "sourcePortRange": "*",
+          "destinationPortRange": "22",
+          "sourceAddressPrefix": "*",
+          "destinationAddressPrefix": "*",
+          "access": "Allow",
+          "direction": "Inbound",
+          "priority": 110,
+          "sourcePortRanges": [],
+          "destinationPortRanges": [],
+          "sourceAddressPrefixes": [],
+          "destinationAddressPrefixes": []
+        }
+      }
+    ]
+  }

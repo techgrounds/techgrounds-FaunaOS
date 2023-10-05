@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    // ----------------------- ID Strings Details ----------------------- //
+    "objectId": {
+      "value": "34a7f47f-9165-4ad9-8e5f-b81dab43dc13"
+    },
+    // ----------------------- Global Parameters ----------------------- //
+    "env": {
+      "value": "dev"
+    },
+    "product": {
+      "value": "fntest9"
+    },
+    "location": {
+      "value": "germanywestcentral"
+    },
+    "locationList": {
+      "value": {
+        "westeurope": "euwest",
+        "germanywestcentral": "gerwc"
+      }
+    },
+
+   // ----------------------- KeyVault ----------------------- //
+    "sharedComponent": {
+      "value": "data"
+    },
+    "kvNumber": {
+      "value": "09"
+    },
+    // ----------------------- Frontend Subnets ----------------------- // 
+    
+   // ----------------------- Backend Subnets ----------------------- //
+  
+    // ----------------------- Other Parameters ----------------------- //
+    
+    "keyVaultProperties": {
+      "value": {
+        "sku": "Standard",
+        "enabledForDeployment": "false",
+        "enabledForTemplateDeployment": "true",
+        "enabledForDiskEncryption": "false",
+        "enableRbacAuthorization": "false",
+        "enableSoftDelete": "true",
+        "softDeleteRetentionInDays": "90",
+        "enablePurgeProtection": "true",
+        "enableNetworkAcls": "true",
+        "accessPolicies": {
+          "tenantid": "de60b253-74bd-4365-b598-b9e55a2b208d",
+          "objectid": "34a7f47f-9165-4ad9-8e5f-b81dab43dc13",
+          "permissions": {
+          }
+        },
+        "allowedSubnets": [
+          "snet-admin"
+        ]
+      }
+    }
+    }
+  }
+
